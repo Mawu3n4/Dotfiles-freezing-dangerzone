@@ -19,7 +19,8 @@ List of config files for my daily work environment
 
 * xterm style
 * emacs style
-_Forked from @rzagabe_
+
+_Forked from [rzagabe](https://github.com/rzagabe)_
 
 ### slim
 
