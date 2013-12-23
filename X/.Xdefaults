@@ -1,0 +1,118 @@
+
+!Colors
+
+! tangoesque scheme
+*background: #111111
+*foreground: #babdb6
+! Black (not tango) + DarkGrey
+*color0:  #000000
+*color8:  #555753
+! DarkRed + Red
+*color1:  #ff6565
+*color9:  #ff8d8d
+! DarkGreen + Green
+*color2:  #93d44f
+*color10: #c8e7a8
+! DarkYellow + Yellow
+*color3:  #eab93d
+*color11: #ffc123
+! DarkBlue + Blue
+*color4:  #204a87
+*color12: #3465a4
+! DarkMangenta + Mangenta
+*color5:  #ce5c00
+*color13: #f57900
+!DarkCyan + Cyan (both not tango)
+*color6:  #89b6e2
+*color14: #46a4ff
+! LightGrey + White
+*color7:  #cccccc
+*color15: #ffffff
+
+/* xconsole  */
+xconsole*font:                  7x13bold
+xconsole*background:            black
+xconsole*foreground:            white
+xconsole*geometry:              +0-0
+
+/* xterm */
+xterm*font:                     9x15bold
+!xterm*background:               black
+!xterm*foreground:               white
+!xterm*saveLines:                1000
+!xterm*scrollBar:                false
+xterm*geometry:           80x25
+xterm*faceName:           terminus:bold:pixelsize=13
+xterm*font:              -*-dina-medium-r-*-*-14-*5-*-*-*-*-*-*
+xterm*dynamicColors:      true
+xterm*utf8:               2
+xterm*eightBitInput:      true
+xterm*saveLines:          512
+xterm*scrollTtyKeypress:  true
+xterm*scrollTtyOutput:    false
+xterm*scrollBar:          false
+XTerm*transparent: true
+xterm*rightScrollBar:     false
+xterm*jumpScroll:         true
+xterm*multiScroll:        true
+xterm*toolBar:            false
+xterm*metaSendsEscape:    true
+xterm*eightBitInput:      false
+xterm*perl-ext-common:          default,matcher
+xterm*urlLauncher:              /usr/bin/google-chrome
+xterm*matcher.button:           1
+
+/* rxvt*/
+rxvt*font:			9x15bold
+rxvt*background:		black
+rxvt*foreground:		white
+rxvt*visualBell:		true
+rxvt*scrollBar:			false
+rxvt*saveLines:			2000
+rxvt*scrollTtyOutput:		false
+rxvt*scrollTtyKeypress:		true
+rxvt*scrollWithBuffer:		true
+rxvt*color0:			#000000
+rxvt*color1:			#9e1828
+rxvt*color2:			#aece92
+rxvt*color3:			#968a38
+rxvt*color4:			#414171
+rxvt*color5:			#963c59
+rxvt*color6:			#418179
+rxvt*color7:			#bebebe
+rxvt*color8:			#666666
+rxvt*color9:			#cf6171
+rxvt*color10:			#c5f779
+rxvt*color11:			#fff796
+rxvt*color12:			#4186be
+rxvt*color13:			#cf9ebe
+rxvt*color14:			#71bebe
+rxvt*color15:			#ffffff
+
+/* emacs */
+emacs*font:			7x13bold
+emacs*ReverseVideo:		on
+
+  ! aterm*transparent:true
+  ! aterm*shading:60
+  ! aterm*background:Black
+  ! aterm*foreground:White
+  ! aterm*scrollBar:true
+  ! aterm*scrollBar_right:true
+  ! aterm*transpscrollbar:true
+  ! aterm*saveLines:32767
+   aterm*font:*-*-fixed-medium-r-normal--*-140-*-*-*-*-iso8859-1
+   aterm*boldFont:*-*-fixed-bold-r-normal--*-*-140-*-*-*-*-iso8859-1
+
+aterm*loginShell:true
+aterm*transparent:true
+aterm*shading:20
+aterm*background:Black
+aterm*foreground:White
+aterm*scrollBar:false
+aterm*scrollBar_right:false
+aterm*transpscrollbar:false
+aterm*saveLines:32767
+! aterm*font:*-*-fixed-medium-r-normal--*-110-*-*-*-*-iso8859-1
+! aterm*boldFont:*-*-fixed-bold-r-normal--*-*-110-*-*-*-*-iso8859-1
+
