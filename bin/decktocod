@@ -30,11 +30,6 @@ if [ $# -eq 2 ]
 then
     echo "$GREEN[+]$CLEAN Deck url to fetch: $1"
     echo "$GREEN[+]$CLEAN Output .cod file : $2"
-elif [ $# -eq 1 ]
-then
-    echo "$GREEN[+]$CLEAN Deck url to fetch: $1"
-    echo "$RED[-]$CLEAN Output .cod file : MISSING, now exiting"
-    exit
 else
     echo "$RED[-]$CLEAN Deck url to fetch: MISSING, now exiting"
     echo "$RED[-]$CLEAN Output .cod file : MISSING, now exiting"
