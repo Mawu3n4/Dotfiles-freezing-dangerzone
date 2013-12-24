@@ -27,3 +27,9 @@ _Forked from [rzagabe](https://github.com/rzagabe)_
 * slim conf file
 * binary theme
 * Wallpaper : http://thesinofman.com/
+
+### emacs
+
+* Styling
+* Whitespace highlight
+* Header guards
