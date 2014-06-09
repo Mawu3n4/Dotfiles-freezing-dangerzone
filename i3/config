@@ -26,18 +26,21 @@ floating_modifier $mod
 # start a terminal
 bindsym $mod+Return exec xterm
 
-bindsym $mod+space exec switchlayout
 bindcode 148 exec gnome-calculator
 bindcode $mod+110 import ~/MyScreenshot.png
-# Tactile keys
 bindcode 78 exec  MyScreenShot
 bindcode 163 exec skype
 bindcode 180 exec google-chrome
+#Touche + pad num
+bindcode $mod+86 exec google-chrome
+#Touche - pad num
+bindcode $mod+104 exec google-chrome
 bindcode $mod+180 exec google-chrome --incognito
-bindcode $mod+46  exec i3lock -u -i/home/clrdr/.noahbradley-our-grasp-of-heaven.png
+bindcode $mod+46  exec i3lock -u -i/home/clrdr/.wallpaper.jpg
 bindcode 121 exec amixer -c 0 set Master toggle
 bindcode 122 exec amixer -c 0 set Master 1-
 bindcode 123 exec amixer -c 0 set Master 1+ unmute
+bindsym $mod+space exec switchlayout
 
 # kill focused window
 bindsym $mod+Shift+Q kill
@@ -88,6 +91,9 @@ bindsym $mod+Shift+space floating toggle
 
 # change focus between tiling / floating windows
 # bindsym $mod+space focus mode_toggle
+
+# move workspace to left monitor
+bindsym $mod+m move workspace to output left
 
 # focus the parent container
 bindsym $mod+a focus parent
@@ -182,19 +188,15 @@ bar {
     }
 }
 
-# Set wallpaper and set property of root window
-exec feh --bg-scale /home/clrdr/.noahbradley-our-grasp-of-heaven.png
+exec feh --bg-scale /home/clrdr/.wallpaper.jpg
 exec xrdb /home/clrdr/.Xdefaults
-# Window transparency
+exec ib
 exec xcompmgr
-# Notification service
 exec twmnd
-# Default windows to open at startup
 exec_always google-chrome --allow-sandbox-debugging
 exec_always xterm
 exec_always xterm
-# Move windows to appropriate workspace
+exec_always instantbird
 assign [title="New Tab - Google Chrome"] www
 assign [title="Skype"] Skype
-# Hid' yo ass
 new_window 1pixel
