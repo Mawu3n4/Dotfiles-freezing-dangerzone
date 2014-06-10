@@ -82,7 +82,9 @@ CRUNCH_DIR_="$CRUNCH_DIR_COLOR%~\$(git_prompt_info) "
 CRUNCH_PROMPT="$CRUNCH_BRACKET_COLOR➭ "
 
 # Put it all together!
-PROMPT="${CL_BROWN}%(!.#.❆)%{$reset_color%} $CRUNCH_DIR_$CRUNCH_PROMPT%{$reset_color%}"
+precmd() {
+PROMPT="${CL_BROWN}%(!.#.❆)%{$reset_color%} $CRUNCH_DIR_$(hirakata romaji) $CRUNCH_PROMPT%{$reset_color%}"
+}
 
 RPROMPT="(%(?:${CL_BROWN}:${CL_RED})%T${CL_NORMAL})"
 
