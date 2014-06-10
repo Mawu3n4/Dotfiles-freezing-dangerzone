@@ -1,21 +1,47 @@
 #!/bin/bash
 
 ROOT_UID="0"
-home=$HOME
+
+GREEN="[0;32m"
+RED="[0;31m"
+CLEAN="[0m"
+
+DF=$(pwd)
+
+print_ok() {
+    echo $GREEN"OK"$CLEAN$1
+}
+
+print_ko() {
+    echo $RED"KO"$CLEAN$1
+}
 
 if [ "$UID" -ne "$ROOT_UID" ] ; then
-    echo "You must be root to do that!"
+    echo "$RED[-]$CLEAN You must be root to do that!"
     exit 1
 fi
 
-cp ./i3/config $home/.i3/
-cp ./i3/i3status.conf /etc/
+echo "$GREEN[+]$CLEAN Configuring i3wm... "
+cp $DF/i3/config $HOME/.i3/
+cp $DF/i3/i3status.conf /etc/
+print_ok "done"
 
-cp ./X/.Xdefaults $home/
-cp ./zsh/.zshrc $home/
-cp ./zsh/crunch.zsh-theme $home/.oh-my-zsh/themes/
+echo "$GREEN[+]$CLEAN Configuring X options... "
+cp $DF/X/.Xdefaults $HOME/
+cp $DF/X/.xmodmap $HOME/
+print_ok "done"
 
-cp -r ./slim/binary /usr/share/slim/themes/
-cp ./slim/slim.conf /etc/
+echo "$GREEN[+]$CLEAN Configuring ZSH... "
+cp $DF/zsh/.zshrc $HOME/
+cp $DF/zsh/mawuena.zsh-theme $HOME/.oh-my-zsh/themes/
+print_ok "done"
 
-cp ./bin/decktocod ./bin/switchlayout /bin/
+echo "$GREEN[+]$CLEAN Configuring slim... "
+cp -r $DF/slim/binary /usr/share/slim/themes/
+cp $DF/slim/slim.conf /etc/
+print_ok "done"
+
+echo "$GREEN[+]$CLEAN Misc configurations... "
+cp $DF/bin/decktocod $DF/bin/switchlayout /bin/
+print_ok "done"
+
