@@ -28,6 +28,7 @@ print_ok "done"
 
 echo "$GREEN[+]$CLEAN Configuring X options... "
 cp $DF/X/.Xdefaults $HOME/
+cp $DF/X/.xsession $HOME/
 cp $DF/X/.xmodmap $HOME/
 print_ok "done"
 
@@ -45,3 +46,15 @@ echo "$GREEN[+]$CLEAN Misc configurations... "
 cp $DF/bin/decktocod $DF/bin/switchlayout /bin/
 print_ok "done"
 
+echo "$GREEN[+]$CLEAN Configuring weechat... "
+cp $DF/weechat/irc.conf $HOME/.weechat/
+echo "done"
+
+echo "$GREEN[+]$CLEAN Configuring GHCI... "
+cp $DF/ghci/.ghci $HOME/
+echo "done"
+
+echo "$GREEN[+]$CLEAN Wallpeppers... "
+cp $DF/wallpaper/.wallpaper.jpg $HOME/
+cp $DF/wallpaper/.wallpaper.jpg $HOME/
+echo "done"
