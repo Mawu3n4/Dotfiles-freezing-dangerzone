@@ -58,3 +58,9 @@ echo "$GREEN[+]$CLEAN Wallpeppers... "
 cp $DF/wallpaper/.wallpaper.jpg $HOME/
 cp $DF/wallpaper/.wallpaper.jpg $HOME/
 echo "done"
+
+echo "$GREEN[+]$CLEAN Configuring eMacs... "
+cp $DF/emacs/.emacs $HOME/
+cp $DF/emacs/.emacs.d $HOME/
+echo "done"
+
