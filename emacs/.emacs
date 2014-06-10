@@ -1,19 +1,90 @@
 
-(add-to-list 'load-path "/home/clrdr/.emacs.d/")
+(add-to-list 'load-path "~/.emacs.d/")
+(add-to-list 'load-path "~/.emacs.d/expand-region")
+(add-to-list 'load-path "~/.emacs.d/multiple-cursors")
+(add-to-list 'load-path "~/.emacs.d/eval-and-replace")
+
+
+;; Haskell Mode
+(add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
+(add-hook 'haskell-mode-hook 'turn-on-haskell-indent)
+;;(add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
+;;(add-hook 'haskell-mode-hook 'turn-on-haskell-simple-indent)
+
+
+;; JSHint mode (daleharvey) -- too slow to laod
+;; (add-to-list 'load-path "~/.emacs.d/jshint-mode")
+;; (require 'flymake-jshint)
+;; (add-hook 'javascript-mode-hook
+;;      (lambda () (flymake-mode t)))
+
+;; Turns on flymake for all files which have a flymake mode
+;; (add-hook 'find-file-hook 'flymake-find-file-hook)
+
+
+;; Web-mode (http://web-mode.org/) -- too slow to laod
+;; (require 'web-mode)
+;; (add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
+;; (add-to-list 'auto-mode-alist '("\\.tpl\\.php\\'" . web-mode))
+;; (add-to-list 'auto-mode-alist '("\\.[gj]sp\\'" . web-mode))
+;; (add-to-list 'auto-mode-alist '("\\.as[cp]x\\'" . web-mode))
+;; (add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
+;; (add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
+;; (add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
+;; (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
+
+;; Expand-region (Magnars @EmacsRocks)
+(require 'expand-region)
+(global-set-key (read-kbd-macro "M-=") 'er/expand-region)
+
+
+;; Multiple-cursos, sublime-like (Magnars @EmacsRocks)
+(require 'multiple-cursors)
+(global-set-key (kbd "C-c c") 'mc/edit-lines)
+(global-set-key (kbd "M-l") 'mc/mark-next-like-this)
+(global-set-key (kbd "M-'") 'mc/mark-previous-like-this)
+(global-set-key (kbd "M-.") 'mc/mark-all-like-this)
+
+;; Eval lisp expression and replace with result
+(defun fc-eval-and-replace ()
+  "Replace the preceding sexp with its value."
+  (interactive)
+  (backward-kill-sexp)
+  (prin1 (eval (read (current-kill 0)))
+         (current-buffer)))
+
+(global-set-key (kbd "C-c C-e") 'fc-eval-and-replace)
+
+;; Increment number after buffer
+(defun increment-number-at-point ()
+  (interactive)
+  (insert "(1+ ")
+  (search-forward-regexp "[^0-9]")
+  (backward-char)
+  (insert ")")
+  (fc-eval-and-replace))
+
+(global-set-key (kbd "C-c i") 'increment-number-at-point)
+
+
+;; goto line #
+(global-set-key (kbd "C-c C-g") 'goto-line)
+
+
+;; Needs rxvt-unicode-256
+;; Highlight current line
+;; (global-hl-line-mode)
+;; (set-face-background hl-line-face "gray5")
 
 ;; Ocaml Tuareg mode
-    (add-to-list 'load-path "~/.elisp/tuareg-mode")
-    (autoload 'tuareg-mode "tuareg" "Major mode for editing Caml code" t)
-    (autoload 'camldebug "camldebug" "Run the Caml debugger" t)
-    (autoload 'tuareg-imenu-set-imenu "tuareg-imenu"
-      "Configuration of imenu for tuareg" t)
-    (add-hook 'tuareg-mode-hook 'tuareg-imenu-set-imenu)
-    (setq auto-mode-alist
-	(append '(("\\.ml[ily]?$" . tuareg-mode)
-			    ("\\.topml$" . tuareg-mode))
-		  auto-mode-alist))
+(autoload 'tuareg-mode "tuareg" "Major mode for editing Caml code" t)
+(autoload 'camldebug "camldebug" "Run the Caml debugger" t)
+(autoload 'tuareg-imenu-set-imenu "tuareg-imenu"
+  "Configuration of imenu for tuareg" t)
+(add-hook 'tuareg-mode-hook 'tuareg-imenu-set-imenu)
+(add-to-list 'auto-mode-alist '("\\.ml'" . tuareg-mode))
 
-;; Epitech headers
+;; Basic headers
 (setq user-full-name "zackaria dibe")
 (setq user-nickname "zackaria dibe")
 (load "std.el")
@@ -74,7 +145,7 @@
 ;; save whitespace-mode variables
 (add-to-list 'desktop-globals-to-save 'whitespace-line-column)
 (add-to-list 'desktop-globals-to-save 'whitespace-style)
-(add-to-list 'load-path "~/.emacs.d/")
+
 (require 'auto-complete-config)
 (add-to-list 'ac-dictionary-directories "~/.emacs.d//ac-dict")
 (ac-config-default)

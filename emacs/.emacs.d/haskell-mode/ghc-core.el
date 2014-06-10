@@ -1,0 +1,1 @@
+/usr/share/emacs/site-lisp/haskell-mode/ghc-core.el
