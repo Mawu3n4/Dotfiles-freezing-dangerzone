@@ -83,7 +83,4 @@ alias canop='sudo su - canopsis'
 # Enable double screen
 alias dscreen='xrandr --output LVDS1 --mode 1366x768 --pos 0x0 --output VGA1 --mode 1920x1080 --pos 1366x0; feh --bg-scale /home/zdibe/.wallpaper.jpg'
 
-alias ga='git add'
-alias gp='git push'
-alias gc='git checkout'
-alias gb='git branch'
+alias gm='git commit -m'
