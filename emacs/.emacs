@@ -1,4 +1,5 @@
 
+;; Load Paths
 (add-to-list 'load-path "~/.emacs.d/")
 (add-to-list 'load-path "~/.emacs.d/expand-region")
 (add-to-list 'load-path "~/.emacs.d/multiple-cursors")
@@ -12,7 +13,7 @@
 ;;(add-hook 'haskell-mode-hook 'turn-on-haskell-simple-indent)
 
 
-;; JSHint mode (daleharvey) -- too slow to laod
+;; JSHint mode (daleharvey) -- (disabled, slows emacs at launch)
 ;; (add-to-list 'load-path "~/.emacs.d/jshint-mode")
 ;; (require 'flymake-jshint)
 ;; (add-hook 'javascript-mode-hook
@@ -22,7 +23,7 @@
 ;; (add-hook 'find-file-hook 'flymake-find-file-hook)
 
 
-;; Web-mode (http://web-mode.org/) -- too slow to laod
+;; Web-mode (http://web-mode.org/) -- (disabled, slows emacs at launch)
 ;; (require 'web-mode)
 ;; (add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
 ;; (add-to-list 'auto-mode-alist '("\\.tpl\\.php\\'" . web-mode))
@@ -55,7 +56,7 @@
 
 (global-set-key (kbd "C-c C-e") 'fc-eval-and-replace)
 
-;; Increment number after buffer
+;; Increment number after buffer, handy with multiple cursors
 (defun increment-number-at-point ()
   (interactive)
   (insert "(1+ ")
@@ -71,7 +72,7 @@
 (global-set-key (kbd "C-c C-g") 'goto-line)
 
 
-;; Needs rxvt-unicode-256
+;; Needs rxvt-unicode-256 and 256 colors-able terminal
 ;; Highlight current line
 ;; (global-hl-line-mode)
 ;; (set-face-background hl-line-face "gray5")
@@ -84,7 +85,7 @@
 (add-hook 'tuareg-mode-hook 'tuareg-imenu-set-imenu)
 (add-to-list 'auto-mode-alist '("\\.ml'" . tuareg-mode))
 
-;; Basic headers
+;; Basic headers, taken from EPITECH's headers
 (setq user-full-name "zackaria dibe")
 (setq user-nickname "zackaria dibe")
 (load "std.el")
@@ -119,6 +120,8 @@
 (put 'upcase-region 'disabled nil)
 (put 'narrow-to-region 'disabled nil)
 
+
+;; Whitespace mode
 (load "utils.el")
 (load "whitespace.el")
 
@@ -151,6 +154,7 @@
 (ac-config-default)
 
 
+;; Ugly, needs to be moved to separate .el file
 ;;HEADER GUARDS
  (global-set-key [f12]
 		 '(lambda ()
