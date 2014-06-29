@@ -197,8 +197,7 @@ exec xrdb /home/zdibe/.Xdefaults
 exec xmodmap /home/zdibe/.xmodmap
 # Window transparency
 exec xcompmgr
-# Notification service
-exec twmnd
+
 
 # Default windows to open at startup
 exec_always iceweasel
