@@ -9,9 +9,14 @@
 #
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
+# Colors
+# Brown : 69410e
+# Green : 479030
+# DeepGreen : 286C12
+
 set $mod Mod4
 
-client.focused          #4c7899 #69410e #ffffff #69410e
+client.focused          #4c7899 #286C12 #ffffff #286C12
 client.focused_inactive #333333 #5f676a #ffffff #484e50
 client.unfocused        #333333 #222222 #888888 #292d2e
 client.urgent           #2f343a #900000 #ffffff #900000
@@ -32,8 +37,8 @@ bindcode 78 exec  MyScreenShot
 bindcode 163 exec skype
 bindcode 180 exec google-chrome
 bindcode $mod+180 exec google-chrome --incognito
-bindcode $mod+46  exec i3lock -i/home/zdibe/.wallpaper.png
-bindcode 75  exec i3lock -i/home/zdibe/.wallpaper.png
+bindcode $mod+46  exec i3lock -i/home/zdibe/.wallpaper.png -t
+bindcode 75  exec i3lock -i/home/zdibe/.wallpaper.png -t
 bindcode 121 exec amixer -c 0 set Master toggle
 bindcode 122 exec amixer -c 0 set Master 1-
 bindcode 123 exec amixer -c 0 set Master 1+ unmute
@@ -180,7 +185,7 @@ bar {
         background #000000
         statusline #ffffff
 
-        focused_workspace  #ffffff #69410e
+        focused_workspace  #ffffff #286C12
         active_workspace   #ffffff #333333
         inactive_workspace #888888 #222222
         urgent_workspace   #ffffff #900000
@@ -191,21 +196,24 @@ bar {
 bindsym $mod+m move workspace to output left
 
 # Set wallpaper and set property of root window
-exec feh --bg-scale /home/zdibe/.wallpaper.jpg
+exec feh --bg-scale ~/.wallpaper.jpg
 
-exec xrdb /home/zdibe/.Xdefaults
-exec xmodmap /home/zdibe/.xmodmap
+exec xrdb ~/.Xdefaults
+exec xmodmap ~/.xmodmap
+
 # Window transparency
 exec xcompmgr
 
+# Notification service
+exec twmnd
 
 # Default windows to open at startup
-exec_always iceweasel
+exec_always google-chrome
 exec_always xterm
 exec_always xterm
 
 # Move windows to appropriate workspace
-assign [title="Iceweasel Start Page - Iceweasel"] www
+assign [title="Mozilla Firefox Start Page - Mozilla Firefox"] www
 assign [title="New Tab - Google Chrome"] www
 assign [title="Skype"] Skype
 
