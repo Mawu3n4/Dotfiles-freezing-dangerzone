@@ -80,3 +80,11 @@ alias canop='sudo su - canopsis'
 
 # Enable double screen
 alias dscreen='xrandr --output LVDS1 --mode 1366x768 --pos 0x0 --output VGA1 --mode 1920x1080 --pos 1366x0; feh --bg-scale /home/zdibe/.wallpaper.jpg'
+
+# Go env var
+export GOPATH=~/Projects/Go/
+export PATH="$PATH:/usr/local/go/bin:$GOPATH/bin"
+
+ff () {
+    find $1 -name $2
+}
