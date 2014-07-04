@@ -1,6 +1,4 @@
 [ -n "$XTERM_VERSION" ] && transset -a 0.8 >/dev/null
-export HOST=worksationzdibe
-export USER=zdibe
 export ZSH=$HOME/.oh-my-zsh
 
 ZSH_THEME="mawuena"
@@ -82,5 +80,3 @@ alias canop='sudo su - canopsis'
 
 # Enable double screen
 alias dscreen='xrandr --output LVDS1 --mode 1366x768 --pos 0x0 --output VGA1 --mode 1920x1080 --pos 1366x0; feh --bg-scale /home/zdibe/.wallpaper.jpg'
-
-alias gm='git commit -m'
