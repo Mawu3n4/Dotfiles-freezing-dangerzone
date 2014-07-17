@@ -6,6 +6,9 @@
 (add-to-list 'load-path "~/.emacs.d/eval-and-replace")
 
 
+;; Use spaces instead of tabs for indentation
+(setq-default indent-tabs-mode nil)
+
 ;; Haskell Mode
 (add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
 (add-hook 'haskell-mode-hook 'turn-on-haskell-indent)
