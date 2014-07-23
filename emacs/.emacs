@@ -6,10 +6,16 @@
 (add-to-list 'load-path "~/.emacs.d/eval-and-replace")
 
 
-;; Use spaces instead of tabs for indentation
+;; Use 4 spaces instead of tabs for indentation
 (setq-default indent-tabs-mode nil)
 (setq-default tab-width 4)
 (setq indent-line-function 'insert-tab)
+
+(add-hook 'python-mode-hook
+      (lambda ()
+        (setq indent-tabs-mode nil)
+        (setq tab-width 4)
+        (setq python-indent 4)))
 
 ;; Haskell Mode
 (add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
