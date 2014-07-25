@@ -20,12 +20,6 @@
 ;; Haskell Mode
 (add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
 (add-hook 'haskell-mode-hook 'turn-on-haskell-indent)
-;;(add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
-;;(add-hook 'haskell-mode-hook 'turn-on-haskell-simple-indent)
-
-
-;; Turns on flymake for all files which have a flymake mode
-;; (add-hook 'find-file-hook 'flymake-find-file-hook)
 
 
 ;; Web-mode (http://web-mode.org/) -- (disabled, slows emacs at launch)
