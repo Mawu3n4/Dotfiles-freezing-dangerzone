@@ -5,6 +5,8 @@
 (add-to-list 'load-path "~/.emacs.d/multiple-cursors")
 (add-to-list 'load-path "~/.emacs.d/eval-and-replace")
 
+;; Share kill-region with xclip
+(require 'xclip)
 
 ;; Use 4 spaces instead of tabs for indentation
 (setq-default indent-tabs-mode nil)
