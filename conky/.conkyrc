@@ -1,0 +1,28 @@
+# Font
+use_xft yes
+xftfont PF Tempesta Seven:pixelsize=8
+
+# Text alpha when using Xft
+#xftalpha 0.10
+
+background        no
+out_to_console    yes
+out_to_x          no
+update_interval   1
+total_run_times   0
+short_units       yes
+pad_percents      3
+override_utf8_locale yes
+
+TEXT
+,[\
+  {"full_text": " ${if_existing /sys/class/net/wlan0/operstate up} [w0 ${addr wlan0}]${endif} ", "color":"\#B58900"},\
+  {"full_text": " ${if_existing /sys/class/net/eth0/operstate up} [e0 ${addr eth0}]${endif} ", "color":"\#B58900"},\
+  {"full_text": " ⧎ [${fs_free_perc /}] ", "color":"\#00A9B5"},\
+  {"full_text": " [${battery_percent}%] ", "color":"\#00A9B5"},\
+  {"full_text": " ◬ [$swapbar] ", "color":"\#ff0000"},\
+  {"full_text": " ⧕ [$membar] ", "color":"\#B58900"},\
+  {"full_text": " ◯ [$cpubar] ", "color":"\#00A9B5"},\
+  {"full_text": " ∑ [$processes] ","color":"\#33CC99"},\
+  {"full_text": " [${time %d-%m %I:%M:%S}] ","color": "\#2fdc57"}\
+]
