@@ -5,6 +5,10 @@
 (add-to-list 'load-path "~/.emacs.d/multiple-cursors")
 (add-to-list 'load-path "~/.emacs.d/eval-and-replace")
 
+;; Enable by default minor mode Highlight 80+
+(require 'highlight-80+)
+(add-hook 'prog-mode-hook 'highlight-80+-mode)
+
 ;; Share kill-region with xclip
 (require 'xclip)
 
@@ -144,6 +148,10 @@
 		    :weight 'bold)
 ;; activate minor whitespace mode when in python mode
 (add-hook 'c-mode-hook 'whitespace-mode)
+(add-hook 'python-mode-hook 'highlight-80+-mode)
+(add-hook 'c-mode-hook 'highlight-80+-mode)
+(add-hook 'js-mode-hook 'highlight-80+-mode)
+(add-hook 'c++-mode-hook 'highlight-80+-mode)
 ;; nuke whitespaces when writing to a file
 (add-hook 'before-save-hook 'whitespace-cleanup)
 ;; save whitespace-mode variables
@@ -190,7 +198,5 @@
 			     )
 		 )
 
-
-(require 'highlight-80+)
 
 ;;HEADER GUARDS END

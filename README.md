@@ -8,6 +8,7 @@ List of config files for my daily work environment
 * i3 status bar
 * i3 key shortcuts & window styles
 * switchlayout (see $mod + space)
+* conky
 
 ### zsh
 
