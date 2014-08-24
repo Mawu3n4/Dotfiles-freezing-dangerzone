@@ -14,9 +14,18 @@
 # Green : 479030
 # DeepGreen : 286C12
 
+# Sea breeze
+# Cyan shift 1: 338888
+# Present Blue : 33AACC
+# Blue Language : 77BBCC
+# QWhite : EEEEEE
+# Army Green : 99AA88
+# Salmon Dark : DD595C
+# Orange : d75022
+
 set $mod Mod4
 
-client.focused          #4c7899 #286C12 #ffffff #286C12
+client.focused          #4c7899 #d75022 #ffffff #d75022
 client.focused_inactive #333333 #5f676a #ffffff #484e50
 client.unfocused        #333333 #222222 #888888 #292d2e
 client.urgent           #2f343a #900000 #ffffff #900000
@@ -185,7 +194,7 @@ bar {
         background #000000
         statusline #ffffff
 
-        focused_workspace  #ffffff #286C12
+        focused_workspace  #ffffff #d75022
         active_workspace   #ffffff #333333
         inactive_workspace #888888 #222222
         urgent_workspace   #ffffff #900000
