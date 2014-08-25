@@ -129,7 +129,7 @@ bindsym $mod+0 workspace λ
 # move focused container to workspace
 bindsym $mod+Shift+exclam move workspace work
 bindsym $mod+Shift+at move workspace www
-bindsym $mod+Shift+numbersign move workspace IB
+bindsym $mod+Shift+numbersign move workspace irc
 bindsym $mod+Shift+dollar move workspace Skype
 bindsym $mod+Shift+percent move workspace 5
 bindsym $mod+Shift+asciicircum move workspace 6
@@ -210,15 +210,11 @@ exec feh --bg-scale ~/.wallpaper.jpg
 exec xrdb ~/.Xdefaults
 exec xmodmap ~/.xmodmap
 
-# Window transparency
-exec xcompmgr
+# Composite Manager
+exec compton --opacity-rule '85:window_type = "dock" && class_g = "i3bar"'
 
 # Notification service
 exec twmnd
-
-# Composite manager
-exec compton --config ~/.comptonrc --backend glx --vsync opengl-swc --paint-on-overlay -b
-exec compton --opacity-rule '85:window_type = "dock" && class_g = "i3bar"'
 
 # Default windows to open at startup
 exec_always google-chrome
