@@ -216,6 +216,10 @@ exec xcompmgr
 # Notification service
 exec twmnd
 
+# Composite manager
+exec compton --config ~/.comptonrc --backend glx --vsync opengl-swc --paint-on-overlay -b
+exec compton --opacity-rule '85:window_type = "dock" && class_g = "i3bar"'
+
 # Default windows to open at startup
 exec_always google-chrome
 exec_always xterm
@@ -228,3 +232,7 @@ assign [title="Skype"] Skype
 
 # Hid' yo ass
 new_window 1pixel
+
+# hide dem titles
+for_window [class="^.*"] border pixel 1
+for_window [title="^float$"] floating enable
