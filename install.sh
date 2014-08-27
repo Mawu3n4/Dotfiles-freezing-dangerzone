@@ -53,6 +53,10 @@ info "Configuring i3wm... "
 link $DF/i3 $HOME/.i3
 info "done"
 
+info "Configuring Conky... "
+link $DF/conky/.conkyrc $HOME/.conkyrc
+info "done"
+
 info "Configuring X options... "
 link $DF/X/.Xdefaults $HOME/.Xdefaults
 link $DF/X/.xsession $HOME/.xsession
