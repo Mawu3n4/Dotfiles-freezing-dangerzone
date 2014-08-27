@@ -7,55 +7,84 @@ RED="[0;31m"
 CLEAN="[0m"
 
 DF=$(pwd)
+UPDATE=0
 
-print_ok() {
-    echo $GREEN"OK"$CLEAN$1
+
+info() {
+    echo $GREEN"[+] "$CLEAN$1
 }
 
-print_ko() {
-    echo $RED"KO"$CLEAN$1
+error() {
+    echo $RED"[-] "$CLEAN$1
 }
 
+link() {
+    if [ -e $2 ] || [ -d $2 ] || [ -L $2 ]
+    then
+        if [ "$UPDATE" == 1 ]
+        then
+            rm -rf $2
+            info "removed $2"
+        else
+            error "failed to create symbolic link '$2': File exists"
+            return
+        fi
+    fi
+    ln -s $1 $2
+}
+
+while test $# -gt 0; do
+    case "$1" in
+        -u | --update)
+            if [ "$UPDATE" == 0 ]; then UPDATE=1; fi
+            shift
+            ;;
+        *)
+            error "Unkown argument $1"
+            shift
+            ;;
+    esac
+done
+
+git submodule init
+git submodule update
+
+info "Configuring i3wm... "
+link $DF/i3 $HOME/.i3
+info "done"
+
+info "Configuring X options... "
+link $DF/X/.Xdefaults $HOME/.Xdefaults
+link $DF/X/.xsession $HOME/.xsession
+link $DF/X/.xmodmap $HOME/.xmodmap
+info "done"
+
+
+info "Configuring ZSH... "
+link $DF/zsh/.zshrc $HOME/.zshrc
+link $DF/zsh/oh-my-zsh/theme/mawuena.zsh-theme $HOME/.oh-my-zsh/themes/mawuena.zsh-theme
+info "done"
+
+info "Configuring weechat... "
+link $DF/weechat/irc.conf $HOME/.weechat/irc.conf
+info "done"
+
+info "Configuring GHCI... "
+link $DF/ghci/.ghci $HOME/.ghci
+info "done"
+
+info "Configuring eMacs... "
+link $DF/emacs/.emacs $HOME/.emacs
+info "done"
+
+
+info "Configuring slim... "
 if [ "$UID" -ne "$ROOT_UID" ] ; then
-    echo "$RED[-]$CLEAN You must be root to do that!"
+    error "You must be root to do that!"
     exit 1
 fi
+link $DF/slim/binary /usr/share/slim/themes/binary
+link $DF/slim/slim.conf /etc/slim.conf
+info "done"
 
-echo "$GREEN[+]$CLEAN Configuring i3wm... "
-cp $DF/i3/config $HOME/.i3/
-cp $DF/i3/i3status.conf /etc/
-print_ok "done"
-
-echo "$GREEN[+]$CLEAN Configuring X options... "
-cp $DF/X/.Xdefaults $HOME/
-cp $DF/X/.xsession $HOME/
-cp $DF/X/.xmodmap $HOME/
-print_ok "done"
-
-echo "$GREEN[+]$CLEAN Configuring ZSH... "
-cp $DF/zsh/.zshrc $HOME/
-cp $DF/zsh/mawuena.zsh-theme $HOME/.oh-my-zsh/themes/
-print_ok "done"
-
-echo "$GREEN[+]$CLEAN Configuring slim... "
-cp -r $DF/slim/binary /usr/share/slim/themes/
-cp $DF/slim/slim.conf /etc/
-print_ok "done"
-
-echo "$GREEN[+]$CLEAN Misc configurations... "
-cp $DF/bin/decktocod $DF/bin/switchlayout /bin/
-print_ok "done"
-
-echo "$GREEN[+]$CLEAN Configuring weechat... "
-cp $DF/weechat/irc.conf $HOME/.weechat/
-echo "done"
-
-echo "$GREEN[+]$CLEAN Configuring GHCI... "
-cp $DF/ghci/.ghci $HOME/
-echo "done"
-
-echo "$GREEN[+]$CLEAN Configuring eMacs... "
-cp $DF/emacs/.emacs $HOME/
-cp $DF/emacs/.emacs.d $HOME/
-echo "done"
-
+UPDATE=0
