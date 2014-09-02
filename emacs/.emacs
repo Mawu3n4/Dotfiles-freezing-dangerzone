@@ -5,6 +5,12 @@
 (add-to-list 'load-path "~/.emacs.d/multiple-cursors")
 (add-to-list 'load-path "~/.emacs.d/eval-and-replace")
 
+(require 'rst)
+(setq auto-mode-alist
+      (append '(("\\.txt$" . rst-mode)
+                ("\\.rst$" . rst-mode)
+                ("\\.rest$" . rst-mode)) auto-mode-alist))
+
 ;; Enable by default minor mode Highlight 80+
 (require 'highlight-80+)
 (add-hook 'prog-mode-hook 'highlight-80+-mode)
