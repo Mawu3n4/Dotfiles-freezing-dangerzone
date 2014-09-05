@@ -88,3 +88,6 @@ export PATH="$PATH:/usr/local/go/bin:$GOPATH/bin"
 ff () {
     find $1 -name $2
 }
+
+# Update submodute after pull
+alias gl='git pull && git submodule init && git submodule update;'
