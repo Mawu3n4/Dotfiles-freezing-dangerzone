@@ -24,6 +24,8 @@ TEXT
   {"full_text": " ⧕ [$membar] ", "color":"\#77BBCC"},\
   {"full_text": " ◯ [$cpubar] ", "color":"\#EEEEEE"},\
   {"full_text": " ∑ [$processes] ","color":"\#77BBCC"},\
-  {"full_text": " [${time %d-%m %I:%M:%S} GMT${exec date +%z | cut -c1-3}] ","color": "\#99AA88"},\
+  {"full_text": " [${time %d-%m} ","color": "\#99AA88"},\
+  {"full_text": " ${time %I:%M}","color": "\#FFFFFF", "font": "bold"},\
+  {"full_text": " GMT${exec date +%z | cut -c1-3}] ","color": "\#99AA88"},\
   {"full_text": " [${exec setxkbmap -query | grep -oE 'us|fr' | tr '[:lower:]' '[:upper:]'}] ","color": "\#99AA88"}\
 ]
