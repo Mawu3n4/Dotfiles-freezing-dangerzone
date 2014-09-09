@@ -89,5 +89,21 @@ ff () {
     find $1 -name $2
 }
 
-# Update submodute after pull
-alias gl='git pull && git submodule init && git submodule update;'
+disable () {
+    id_device=$(xinput --list |
+        grep -E "$1.*$2|$2.*$1" |
+        grep -oE "id=[0-9]+" |
+        cut -d '=' -f2)
+    xinput set-int-prop $id_device "Device Enabled" 8 0
+}
+
+enable () {
+    id_device=$(xinput --list |
+        grep -E "$1.*$2|$2.*$1" |
+        grep -oE "id=[0-9]+" |
+        cut -d '=' -f2)
+    xinput set-int-prop $id_device "Device Enabled" 8 1
+}
+
+alias dkblaptop='disable keyboard AT'
+alias ekblaptop='enable keyboard AT'
