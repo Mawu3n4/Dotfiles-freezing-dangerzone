@@ -1,4 +1,5 @@
-[ -n "$XTERM_VERSION" ] && transset -a 0.8 >/dev/null
+[ "$XTERM_VERSION" ] && transset -a 0.8 >/dev/null
+
 export ZSH=$HOME/.oh-my-zsh
 
 ZSH_THEME="mawuena"
@@ -89,7 +90,7 @@ ff () {
     find $1 -name $2
 }
 
-disable () {
+disable_device () {
     id_device=$(xinput --list |
         grep -E "$1.*$2|$2.*$1" |
         grep -oE "id=[0-9]+" |
@@ -97,7 +98,7 @@ disable () {
     xinput set-int-prop $id_device "Device Enabled" 8 0
 }
 
-enable () {
+enable_device () {
     id_device=$(xinput --list |
         grep -E "$1.*$2|$2.*$1" |
         grep -oE "id=[0-9]+" |
@@ -105,5 +106,5 @@ enable () {
     xinput set-int-prop $id_device "Device Enabled" 8 1
 }
 
-alias dkblaptop='disable keyboard AT'
-alias ekblaptop='enable keyboard AT'
+alias dkblaptop='disable_device keyboard AT'
+alias ekblaptop='enable_device keyboard AT'
