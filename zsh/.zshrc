@@ -1,6 +1,7 @@
 [ "$XTERM_VERSION" ] && transset -a 0.8 >/dev/null
 
 export ZSH=$HOME/.oh-my-zsh
+export LD_LIBRARY_PATH=/usr/lib
 
 ZSH_THEME="mawuena"
 plugins=(git hirakata)
