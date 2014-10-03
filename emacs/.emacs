@@ -4,6 +4,12 @@
 (add-to-list 'load-path "~/.emacs.d/expand-region")
 (add-to-list 'load-path "~/.emacs.d/multiple-cursors")
 (add-to-list 'load-path "~/.emacs.d/eval-and-replace")
+(add-to-list 'load-path "~/.emacs.d/vendor")
+
+(require 'sws-mode)
+(require 'jade-mode)
+(add-to-list 'auto-mode-alist '("\\.styl$" . sws-mode))
+(add-to-list 'auto-mode-alist '("\\.jade$" . jade-mode))
 
 (require 'rst)
 (setq auto-mode-alist
@@ -27,6 +33,12 @@
 (setq indent-line-function 'insert-tab)
 
 (add-hook 'python-mode-hook
+      (lambda ()
+        (setq indent-tabs-mode nil)
+        (setq tab-width 4)
+        (setq python-indent 4)))
+
+(add-hook 'js-mode-hook
       (lambda ()
         (setq indent-tabs-mode nil)
         (setq tab-width 4)
