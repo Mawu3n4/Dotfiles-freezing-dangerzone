@@ -86,5 +86,4 @@ precmd() {
 PROMPT="${CL_CYAN}%(!.#.❆)%{$reset_color%} $CRUNCH_DIR_$(hirakata romaji mute) $CRUNCH_PROMPT%{$reset_color%}"
 }
 
-RPROMPT="(%(?:${CL_CYAN}:${CL_RED})%T${CL_NORMAL})"
 
