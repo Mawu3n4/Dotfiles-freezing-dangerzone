@@ -14,18 +14,24 @@ short_units       yes
 pad_percents      3
 override_utf8_locale yes
 
+color0 #122002
+color1 408e38
+color2 d68350
+color3 dba69a
+color4 e0cbc7
+
 TEXT
 ,[\
-  {"full_text": " ${if_existing /sys/class/net/wlan0/operstate up} [w0 ${addr wlan0}]${endif} ", "color":"\#338888"},\
-  {"full_text": " ${if_existing /sys/class/net/eth0/operstate up} [e0 ${addr eth0}]${endif} ", "color":"\#338888"},\
-  {"full_text": " ⧎ [${fs_free_perc /}] ", "color":"\#338888"},\
-  {"full_text": " [${battery_percent}%] ", "color":"\#99AA88"},\
-  {"full_text": " ◬ [$swapbar] ", "color":"\#33AACC"},\
-  {"full_text": " ⧕ [$membar] ", "color":"\#77BBCC"},\
-  {"full_text": " ◯ [$cpubar] ", "color":"\#EEEEEE"},\
-  {"full_text": " ∑ [$processes] ","color":"\#77BBCC"},\
-  {"full_text": " [${time %d-%m} ","color": "\#99AA88"},\
+  {"full_text": " ${if_existing /sys/class/net/wlan0/operstate up} [w0 ${addr wlan0}]${endif} ", "color":"\#d68350"},\
+  {"full_text": " ${if_existing /sys/class/net/eth0/operstate up} [e0 ${addr eth0}]${endif} ", "color":"\#d68350"},\
+  {"full_text": " ⧎ [${fs_free_perc /}] ", "color":"\#e0cbc7"},\
+  {"full_text": " [${battery_percent}%] ", "color":"\#dba69a"},\
+  {"full_text": " ◬ [$swapbar] ", "color":"\#d68350"},\
+  {"full_text": " ⧕ [$membar] ", "color":"\#408e38"},\
+  {"full_text": " ◯ [$cpubar] ", "color":"\#d68350"},\
+  {"full_text": " ∑ [$processes] ","color":"\#408e38"},\
+  {"full_text": " [${time %d-%m} ","color": "\#dba69a"},\
   {"full_text": " ${time %I:%M}","color": "\#FFFFFF", "font": "bold"},\
-  {"full_text": " GMT${exec date +%z | cut -c1-3}] ","color": "\#99AA88"},\
-  {"full_text": " [${exec setxkbmap -query | grep -oE 'us|fr' | tr '[:lower:]' '[:upper:]'}] ","color": "\#99AA88"}\
+  {"full_text": " GMT${exec date +%z | cut -c1-3}] ","color": "\#dba69a"},\
+  {"full_text": " [${exec setxkbmap -query | grep -oE 'us|fr' | tr '[:lower:]' '[:upper:]'}] ","color": "\#dba69a"}\
 ]

@@ -22,10 +22,11 @@
 # Army Green : 99AA88
 # Salmon Dark : DD595C
 # Orange : d75022
+# Pale Green : a08e38
 
 set $mod Mod4
 
-client.focused          #4c7899 #d75022 #ffffff #d75022
+client.focused          #4c7899 #a08e38 #ffffff #a08e38
 client.focused_inactive #333333 #5f676a #ffffff #484e50
 client.unfocused        #333333 #222222 #888888 #292d2e
 client.urgent           #2f343a #900000 #ffffff #900000
@@ -194,7 +195,7 @@ bar {
         background #000000
         statusline #ffffff
 
-        focused_workspace  #ffffff #d75022
+        focused_workspace  #ffffff #a08e38
         active_workspace   #ffffff #333333
         inactive_workspace #888888 #222222
         urgent_workspace   #ffffff #900000
