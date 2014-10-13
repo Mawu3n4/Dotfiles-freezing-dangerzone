@@ -212,9 +212,9 @@ bar {
         statusline #c0c0c0
         # class           border  backgrd text
         focused_workspace #161616 #161616 #ffffff
-        active_workspace #161616 #161616 #a5a5a5
-        inactive_workspace #161616 #161616 #a5a5a5
-        urgent_workspace #161616 #161616 #a5a5a5
+        active_workspace #161616 #161616 #888888
+        inactive_workspace #161616 #161616 #888888
+        urgent_workspace #161616 #900000 #888888
     }
 }
 
