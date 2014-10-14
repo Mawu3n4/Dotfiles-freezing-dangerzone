@@ -24,8 +24,9 @@ TEXT
 ,[\
   {"full_text": " ${if_existing /sys/class/net/wlan0/operstate up} [w0 ${addr wlan0}]${endif} ", "color":"\#d68350"},\
   {"full_text": " ${if_existing /sys/class/net/eth0/operstate up} [e0 ${addr eth0}]${endif} ", "color":"\#d68350"},\
+  {"full_text": " ♫ [${exec ~/.bin/sound}]","color":"\#408e38"},\
   {"full_text": " ⧎ [${fs_free_perc /}] ", "color":"\#e0cbc7"},\
-  {"full_text": " [${battery_percent}%] ", "color":"\#dba69a"},\
+  {"full_text": " ⚡ [${battery_percent}%] ", "color":"\#dba69a"},\
   {"full_text": " ◬ [$swapbar] ", "color":"\#d68350"},\
   {"full_text": " ⧕ [$membar] ", "color":"\#408e38"},\
   {"full_text": " ◯ [$cpubar] ", "color":"\#d68350"},\
