@@ -1,0 +1,4 @@
+pcm.!default plug:pulse
+pcm.pulse {
+    type pulse
+}
