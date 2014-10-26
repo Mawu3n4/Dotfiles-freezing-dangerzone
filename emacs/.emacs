@@ -12,7 +12,7 @@
 (add-to-list 'auto-mode-alist '("\\.jade$" . jade-mode))
 
 ;; Dirty hack for synchronous writing
-(global-set-key (kbd "C-q") (lambda () (interactive) (run-with-idle-timer 0 1 'save-buffer)))
+(global-set-key (kbd "C-q") (lambda () (interactive) (run-with-idle-timer 1 1 'save-buffer)))
 
 (require 'rst)
 (setq auto-mode-alist
