@@ -6,6 +6,12 @@
 (add-to-list 'load-path "~/.emacs.d/eval-and-replace")
 (add-to-list 'load-path "~/.emacs.d/vendor")
 
+;; Install packages
+(require 'package)
+(add-to-list 'package-archives
+         '("melpa" . "http://melpa.milkbox.net/packages/") t)
+(package-initialize)
+
 (require 'sws-mode)
 (require 'jade-mode)
 (add-to-list 'auto-mode-alist '("\\.styl$" . sws-mode))
