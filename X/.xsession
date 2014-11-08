@@ -6,3 +6,5 @@ then
 fi
 
 exec i3
+
+modprobe -r b43 ssb wl && modprobe wl&
