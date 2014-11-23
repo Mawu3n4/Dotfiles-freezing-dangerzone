@@ -107,6 +107,15 @@
 
 (global-set-key (kbd "C-c i") 'increment-number-at-point)
 
+;; J mode
+(add-to-list 'load-path "/path/to/j-mode/")
+(autoload 'j-mode "j-mode.el" "Major mode for editing J files" t)
+(add-to-list 'auto-mode-alist '("\\.ij[rstp]$" . j-mode))
+(custom-set-face
+ '(j-verb-face ((t (:foreground "Red"))))
+ '(j-adverb-face ((t (:foreground "Green"))))
+ '(j-conjunction-face ((t (:foreground "Blue"))))
+ '(j-other-face ((t (:foreground "Black")))))
 
 ;; goto line #
 (global-set-key (kbd "C-c C-g") 'goto-line)
