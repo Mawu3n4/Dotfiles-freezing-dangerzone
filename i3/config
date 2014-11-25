@@ -24,9 +24,17 @@
 # Orange : d75022
 # Pale Green : a08e38
 
+# >Using<
+
+# Sunset Pines
+# Strong Purple : #a0035a
+# Orange Sun : #e06940
+# Salmon Light : #e04a37
+# Magenta : #a0043c
+
 set $mod Mod4
 
-client.focused          #4c7899 #a08e38 #ffffff #a08e38
+client.focused          #4c7899 #a0043c #ffffff #a0043c
 client.focused_inactive #333333 #5f676a #ffffff #484e50
 client.unfocused        #333333 #222222 #888888 #292d2e
 client.urgent           #2f343a #900000 #ffffff #900000
