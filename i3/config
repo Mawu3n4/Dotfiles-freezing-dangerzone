@@ -211,7 +211,6 @@ bindsym $mod+r mode "resize"
 # finds out, if available
 bar {
         font pango:ComicNeue Light 10
-        strip_workspace_numbers yes
         tray_output none
         workspace_buttons yes
         status_command ~/.i3/conky-i3bar

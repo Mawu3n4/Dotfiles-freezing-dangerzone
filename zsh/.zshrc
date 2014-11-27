@@ -109,3 +109,8 @@ enable_device () {
 
 alias dkblaptop='disable_device keyboard AT'
 alias ekblaptop='enable_device keyboard AT'
+
+# Install packages from dpkg-query -l output
+install_packages () {
+    sudo apt-get install $(cat $1 | cut -d ' ' -f 3 | tr '\n' ' ')
+}
