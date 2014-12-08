@@ -1,0 +1,10 @@
+#!/bin/bash
+
+id=$(xdpyinfo | grep focus | cut -d ' ' -f 4)
+pid=$(($(xprop -id $id | grep -m 1 PID | cut -d ' ' -f 3) + 2))
+
+if [ -e "/proc/$PID/cwd" ] ;then
+    xterm -e "cd $(readlink /proc/$PID/cwd) && /bin/zsh"
+else
+    xterm
+fi
