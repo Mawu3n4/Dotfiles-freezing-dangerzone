@@ -47,7 +47,7 @@ font pango:ComicNeue Light 0
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec xterm
+bindsym $mod+Return exec term_cwd
 
 
 # Tactile keys
