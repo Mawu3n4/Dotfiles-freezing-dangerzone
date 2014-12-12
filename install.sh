@@ -79,6 +79,7 @@ info "done"
 
 info "Configuring eMacs... "
 link $DF/emacs/.emacs $HOME/.emacs
+link $DF/emacs/.emacs.d $HOME/.emacs.d
 info "done"
 
 
