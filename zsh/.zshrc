@@ -81,7 +81,7 @@ getdeck () {
 alias canop='sudo su - canopsis'
 
 # Enable double screen
-alias dscreen='xrandr --output LVDS1 --mode 1366x768 --pos 0x0 --output VGA1 --mode 1920x1080 --pos 1366x0; feh --bg-scale /home/zdibe/.wallpaper.jpg'
+alias dscreen='xrandr --output LVDS-1 --mode 1920x1080 --pos 0x0 --output VGA-1 --mode 1920x1080 --pos 1920x0; feh --bg-scale /home/zdibe/.wallpaper.jpg'
 
 # Go env var
 export GOPATH=~/Projects/Go/
