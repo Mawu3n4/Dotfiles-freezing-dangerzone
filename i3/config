@@ -200,7 +200,7 @@ bar {
         workspace_buttons yes
         status_command ~/.i3/conky-i3bar
     colors {
-        background #161616
+        background #000000
         statusline #c0c0c0
         # class           border  backgrd text
         focused_workspace #161616 #161616 #ffffff
@@ -220,7 +220,7 @@ exec xrdb ~/.Xdefaults
 exec xmodmap ~/.xmodmap
 
 # Composite Manager
-exec compton --opacity-rule '85:window_type = "dock" && class_g = "i3bar"'
+exec compton --opacity-rule '80:window_type = "dock" && class_g = "i3bar"'
 
 # Notification service
 exec twmnd
