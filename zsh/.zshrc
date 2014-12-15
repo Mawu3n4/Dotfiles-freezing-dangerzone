@@ -1,4 +1,4 @@
-[ "$XTERM_VERSION" ] && transset -a 0.8 >/dev/null
+[ "$XTERM_VERSION" ] && transset -a $(cat ~/.opacityrc) >/dev/null
 
 export ZSH=$HOME/.oh-my-zsh
 export LD_LIBRARY_PATH=/usr/lib
@@ -81,7 +81,7 @@ getdeck () {
 alias canop='sudo su - canopsis'
 
 # Enable double screen
-alias dscreen='xrandr --output LVDS-1 --mode 1920x1080 --pos 0x0 --output VGA-1 --mode 1920x1080 --pos 1920x0; feh --bg-scale /home/zdibe/.wallpaper.jpg'
+alias dscreen='xrandr --output LVDS-1 --mode 1920x1080 --pos 0x0 --output VGA-1 --mode 1920x1080 --pos 1920x0'
 
 # Go env var
 export GOPATH=~/Projects/Go/
