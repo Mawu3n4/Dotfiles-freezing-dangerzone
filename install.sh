@@ -66,6 +66,7 @@ info "done"
 
 info "Configuring ZSH... "
 link $DF/zsh/.zshrc $HOME/.zshrc
+link $DF/zsh/.opacityrc $HOME/.opacityrc
 link $DF/zsh/oh-my-zsh/theme/mawuena.zsh-theme $HOME/.oh-my-zsh/themes/mawuena.zsh-theme
 info "done"
 
