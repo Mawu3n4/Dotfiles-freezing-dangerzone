@@ -1,0 +1,12 @@
+
+# 1 : Let click
+# 2 : Right click
+# 3 : Middle click
+# 4 : Wheel up
+# 5 : Wheel Down
+
+"focused-window-opacity up"
+    control+alt+b:4
+
+"focused-window-opacity down"
+    control+alt+b:5
