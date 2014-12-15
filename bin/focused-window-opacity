@@ -1,0 +1,14 @@
+#!/bin/bash
+
+if [ -z "$op_val" ]; then
+    op_val=$(cat ~/.opacityrc)
+fi
+
+if [ "$1" = "up" ]; then
+    op_val=$(bc -l <<< "scale=2;$op_val+0.05-($op_val+0.05)%1")
+else
+    op_val=$(bc -l <<< "scale=2;($op_val - 0.05) * (($op_val - 0.05) > 0)")
+fi
+
+echo "$op_val" > $HOME/.opacityrc
+transset -a $(echo $op_val)
