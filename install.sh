@@ -78,6 +78,10 @@ info "Configuring GHCI... "
 link $DF/ghci/.ghci $HOME/.ghci
 info "done"
 
+info "Configuring scripts... "
+link $DK/bin $HOME/.bin
+info "done"
+
 info "Configuring eMacs... "
 link $DF/emacs/.emacs $HOME/.emacs
 link $DF/emacs/.emacs.d $HOME/.emacs.d

@@ -8,7 +8,7 @@ plugins=(git hirakata)
 
 source $ZSH/oh-my-zsh.sh
 
-export PATH="/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games"
+export PATH=$(readlink -f ~/.bin)":/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games"
 ZSH=$HOME/.oh-my-zsh
 
 alias ls='ls --color=always'
