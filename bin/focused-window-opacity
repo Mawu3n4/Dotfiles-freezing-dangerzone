@@ -5,9 +5,9 @@ if [ -z "$op_val" ]; then
 fi
 
 if [ "$1" = "up" ]; then
-    op_val=$(bc <<< "scale=2;$op_val+0.05-($op_val+0.05)%1")
+    op_val=$(bc -l <<< "scale=2; x=$op_val + 0.05; y=1; x - ((x - 1) * (x > 1));")
 else
-    op_val=$(bc -l <<< "scale=2;($op_val - 0.05) * (($op_val - 0.05) > 0)")
+    op_val=$(bc -l <<< "scale=2; x=$op_val - 0.05; x * (x > 0)")
 fi
 
 echo "$op_val" > $HOME/.opacityrc
