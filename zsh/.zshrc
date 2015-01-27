@@ -9,6 +9,7 @@ plugins=(git hirakata)
 source $ZSH/oh-my-zsh.sh
 
 export PATH=$(readlink -f ~/.bin)":/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games"
+
 ZSH=$HOME/.oh-my-zsh
 
 alias ls='ls --color=always'
@@ -114,3 +115,5 @@ alias ekblaptop='enable_device keyboard AT'
 install_packages () {
     sudo apt-get install $(cat $1 | cut -d ' ' -f 3 | tr '\n' ' ')
 }
+
+alias gir='grep -Ir'
