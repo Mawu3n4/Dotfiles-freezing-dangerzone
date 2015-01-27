@@ -5,6 +5,14 @@ export LD_LIBRARY_PATH=/usr/lib
 
 ZSH_THEME="mawuena"
 plugins=(git hirakata)
+source "$HOME/.antigen/antigen.zsh"
+
+antigen-bundle arialdomartini/oh-my-git
+antigen theme arialdomartini/oh-my-git-themes oppa-lana-style
+antigen-bundle git
+antigen-bundle zsh-users/zsh-syntax-highlighting
+antigen-bundle zsh-users/zsh-history-substring-search
+antigen-apply
 
 source $ZSH/oh-my-zsh.sh
 
