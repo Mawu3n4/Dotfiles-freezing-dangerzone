@@ -1,0 +1,14 @@
+#!/bin/bash
+
+if [ -z "$bl_val" ]; then
+    bl_val=$(cat ~/.backlightrc)
+fi
+
+if [ "$1" = "up" ]; then
+    bl_val=$(bc -l <<< "scale=2; x=$bl_val + 0.05; y=1; x - ((x - 1) * (x > 1));")
+else
+    bl_val=$(bc -l <<< "scale=2; x=$bl_val - 0.05; x * (x > 0)")
+fi
+
+echo "$bl_val" > $HOME/.backlightrc
+xrandr --output $(xrandr | grep ' connected' | cut -d ' ' -f1) --brightness $(echo $bl_val)
