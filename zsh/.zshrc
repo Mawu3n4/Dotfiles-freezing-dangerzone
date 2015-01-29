@@ -125,3 +125,5 @@ install_packages () {
 }
 
 alias gir='grep -Ir'
+
+alias ipy='ipython'

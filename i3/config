@@ -19,6 +19,9 @@
 
 set $mod Mod4
 
+set &PageUp 112
+set &PageDown 117
+
 client.focused          #4c7899 #a0043c #ffffff #a0043c
 client.focused_inactive #333333 #5f676a #ffffff #484e50
 client.unfocused        #333333 #222222 #888888 #292d2e
@@ -46,6 +49,10 @@ bindcode 75  exec i3lock -i ~//.wallpaper.png -t
 bindcode 121 exec amixer -c 0 set Master toggle
 bindcode 122 exec amixer -c 0 set Master 1-
 bindcode 123 exec amixer -c 0 set Master 1+ unmute
+
+# lower/increase luminosity
+bindcode $mod+73 exec backlight up
+bindcode $mod+74 exec backlight down
 
 # switch US <-> FR layout
 bindsym $mod+space exec switchlayout
