@@ -153,12 +153,12 @@ set $WS1 1:| WORK |
 set $WS2 2:| WWW |
 set $WS3 3:| IRC |
 set $WS4 4:| SKYPE |
-set $WS5 5:| 5 |
-set $WS6 6:| 6 |
-set $WS7 7:| 7 |
-set $WS8 8:| 8 |
-set $WS9 9:| 9 |
-set $WS0 0:| λ |
+set $WS5 | 5 |
+set $WS6 | 6 |
+set $WS7 | 7 |
+set $WS8 | 8 |
+set $WS9 | 9 |
+set $WS0 | λ |
 
 
 # reload the configuration file
