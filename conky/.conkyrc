@@ -22,7 +22,7 @@ color4 #a0043c
 
 TEXT
 ,[\
-  {"full_text": " ${if_existing /sys/class/net/wlan0/operstate up} [w0 ${addr wlan0}]${endif} ", "color":"\#e06940"},\
+  {"full_text": " ${if_existing /sys/class/net/wlan0/operstate up} [w0: ${wireless_Essid wlan0}: ${addr wlan0}]${endif} ", "color":"\#e06940"},\
   {"full_text": " ${if_existing /sys/class/net/eth0/operstate up} [e0 ${addr eth0}]${endif} ", "color":"\#e06940"},\
   {"full_text": " ♫ [${exec ~/.bin/sound}]","color":"\#a0035a"},\
   {"full_text": " ⧎ [${fs_free_perc /}] ", "color":"\#a0043c"},\
