@@ -234,6 +234,7 @@ exec feh --bg-scale ~/.wallpaper.jpg
 
 exec xrdb ~/.Xdefaults
 exec xmodmap ~/.xmodmap
+exec xbindkeys ~/.xbindkeysrc
 
 # Composite Manager
 exec compton --opacity-rule '80:window_type = "dock" && class_g = "i3bar"'
