@@ -7,11 +7,9 @@
 (add-to-list 'load-path "~/.emacs.d/vendor")
 
 ;; Install packages
-(require 'package)
-(add-to-list 'package-archives
-         '("melpa" . "http://melpa.milkbox.net/packages/") t)
-(package-initialize)
-
+(setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
+                         ("marmalade" . "https://marmalade-repo.org/packages/")
+                         ("melpa" . "http://melpa.milkbox.net/packages/")))
 ;; (require 'sws-mode)
 ;; (require 'jade-mode)
 ;; (add-to-list 'auto-mode-alist '("\\.styl$" . sws-mode))
@@ -46,12 +44,32 @@
 (setq-default tab-width 4)
 (setq indent-line-function 'insert-tab)
 
+;; Python
 (add-hook 'python-mode-hook
-      (lambda ()
-        (setq indent-tabs-mode nil)
-        (setq tab-width 4)
-        (setq python-indent 4)))
+          (lambda ()
+            (setq indent-tabs-mode nil)
+            (setq tab-width 4)
+            (setq python-indent 4)))
 
+(add-hook 'python-mode-hook 'flycheck-mode)
+
+(autoload 'jedi:setup "jedi" nil t)
+(add-hook 'python-mode-hook 'jedi:setup)
+(setq jedi:setup-keys t)                      ; optional
+(setq jedi:complete-on-dot t)                 ; optional
+
+(when (load "flymake" t)
+  (defun flymake-pyflakes-init ()
+    (when (not (subsetp (list (current-buffer)) (tramp-list-remote-buffers)))
+      (let* ((temp-file (flymake-init-create-temp-buffer-copy
+                         'flymake-create-temp-inplace))
+             (local-file (file-relative-name
+                          temp-file
+                          (file-name-directory buffer-file-name))))
+        (list "pyflakes" (list local-file)))))
+  (add-to-list 'flymake-allowed-file-name-masks
+                              '("\\.py\\'" flymake-pyflakes-init)))
+;; JavaScript
 (add-hook 'js-mode-hook
       (lambda ()
         (setq indent-tabs-mode nil)
@@ -223,9 +241,9 @@
 (add-to-list 'desktop-globals-to-save 'whitespace-line-column)
 (add-to-list 'desktop-globals-to-save 'whitespace-style)
 
-(require 'auto-complete-config)
-(add-to-list 'ac-dictionary-directories "~/.emacs.d//ac-dict")
-(ac-config-default)
+;; (require 'auto-complete-config)
+;; (add-to-list 'ac-dictionary-directories "~/.emacs.d//ac-dict")
+;; (ac-config-default)
 
 
 ;; Ugly, needs to be moved to separate .el file
