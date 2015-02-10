@@ -68,6 +68,9 @@ info "Configuring ZSH... "
 link $DF/zsh/.zshrc $HOME/.zshrc
 link $DF/zsh/.opacityrc $HOME/.opacityrc
 link $DF/zsh/oh-my-zsh/theme/mawuena.zsh-theme $HOME/.oh-my-zsh/themes/mawuena.zsh-theme
+git clone https://github.com/junegunn/fzf.git $HOME/.fzf
+$HOME/.fzf/install
+git clone https://github.com/zsh-users/antigen.git $HOME/.antigen
 info "done"
 
 info "Configuring weechat... "
