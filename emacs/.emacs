@@ -23,6 +23,15 @@
   )
 (global-set-key (kbd "C-q") 'sync-writing)
 
+;; i3 bindings for tiled buffers
+(global-set-key (kbd "<M-left>") 'other-window)
+(global-set-key (kbd "<M-right>") 'other-window)
+(global-set-key (kbd "C-x v") 'split-window-below)
+(global-set-key (kbd "C-x h") 'split-window-right)
+
+;; Fuzzy search by default
+(global-set-key (kbd "C-x f") 'fiplr-find-file)
+
 (require 'rst)
 (setq auto-mode-alist
       (append '(("\\.txt$" . rst-mode)
@@ -50,6 +59,7 @@
             (setq indent-tabs-mode nil)
             (setq tab-width 4)
             (setq python-indent 4)))
+
 
 (add-hook 'python-mode-hook 'flycheck-mode)
 
