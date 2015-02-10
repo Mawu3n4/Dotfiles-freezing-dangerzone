@@ -1,27 +1,34 @@
 [ "$XTERM_VERSION" ] && transset -a $(cat ~/.opacityrc) >/dev/null
 
-source "$HOME/.antigen/antigen.zsh"
+if [ -f $HOME/.antigen/antigen.zsh ]; then
 
-antigen-theme Zack--/zsh-files themes/mawuena
+    source $HOME/.antigen/antigen.zsh
 
-antigen-bundle arialdomartini/oh-my-git
-antigen-bundle git
+    antigen-theme Zack--/zsh-files themes/mawuena
 
-# Pretty ZSH
-antigen-bundle zsh-users/zsh-syntax-highlighting
-antigen-bundle zsh-users/zsh-history-substring-search
+    antigen-bundle arialdomartini/oh-my-git
+    antigen-bundle git
 
-# Python Plugins
-antigen bundle pip
-antigen bundle python
-antigen bundle virtualenv
+    # Pretty ZSH
+    antigen-bundle zsh-users/zsh-syntax-highlighting
+    antigen-bundle zsh-users/zsh-history-substring-search
 
-# Personal stuff
-antigen-bundle Zack--/zsh-files
+    # Python Plugins
+    antigen bundle pip
+    antigen bundle python
+    antigen bundle virtualenv
 
-antigen-apply
+    # Personal stuff
+    antigen-bundle Zack--/zsh-files
 
-ZSH_THEME="mawuena"
-plugins=(git hirakata)
+    antigen-apply
+fi
 
-source $ZSH/oh-my-zsh.sh
+
+if [ -f $ZSH/oh-my-zsh.sh ]; then
+    ZSH_THEME="mawuena"
+    plugins=(git hirakata)
+    source $ZSH/oh-my-zsh.sh
+fi
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
