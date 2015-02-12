@@ -15,6 +15,14 @@
 ;; (add-to-list 'auto-mode-alist '("\\.styl$" . sws-mode))
 ;; (add-to-list 'auto-mode-alist '("\\.jade$" . jade-mode))
 
+;; Open Speedbar at startup if frame is big enough
+(when
+    (> (frame-width) 120)
+  (add-hook 'emacs-startup-hook (lambda ()
+                                  (sr-speedbar-open)
+                                  ))
+  )
+
 ;; Dirty hack for synchronous writing
 (defun sync-writing ()
   (interactive)
@@ -30,7 +38,8 @@
 (global-set-key (kbd "C-x h") 'split-window-right)
 
 ;; Fuzzy search by default
-(global-set-key (kbd "C-x f") 'fiplr-find-file)
+(global-set-key (kbd "C-x C-f") 'fiplr-find-file)
+
 
 (require 'rst)
 (setq auto-mode-alist
@@ -56,6 +65,7 @@
 ;; Python
 (add-hook 'python-mode-hook
           (lambda ()
+            (gtags-mode t)
             (setq indent-tabs-mode nil)
             (setq tab-width 4)
             (setq python-indent 4)))
