@@ -37,6 +37,8 @@
 (global-set-key (kbd "C-x v") 'split-window-below)
 (global-set-key (kbd "C-x h") 'split-window-right)
 
+(global-set-key (kbd "M-`") 'next-buffer)
+
 ;; Fuzzy search by default
 (global-set-key (kbd "C-x C-f") 'fiplr-find-file)
 
