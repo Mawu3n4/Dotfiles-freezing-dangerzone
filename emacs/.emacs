@@ -33,8 +33,11 @@
              (define-key speedbar-mode-map [M-up] 'speedbar-restricted-prev)
              (define-key speedbar-mode-map [M-down] 'speedbar-restricted-next)
              (define-key speedbar-mode-map [up] 'speedbar-prev)
-             (define-key speedbar-mode-map [down] 'speedbar-next)))
-
+             (define-key speedbar-mode-map [down] 'speedbar-next)
+             (define-key speedbar-mode-map [C-M-up] 'speedbar-backward-list)
+             (define-key speedbar-mode-map [C-M-down] 'speedbar-forward-list)
+             )
+          )
 
 ;; Dirty hack for synchronous writing
 (defun sync-writing ()
