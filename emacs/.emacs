@@ -15,6 +15,7 @@
 ;; (add-to-list 'auto-mode-alist '("\\.styl$" . sws-mode))
 ;; (add-to-list 'auto-mode-alist '("\\.jade$" . jade-mode))
 
+;; Speedbar
 ;; Open Speedbar at startup if frame is big enough
 (when
     (> (frame-width) 120)
@@ -22,6 +23,18 @@
                                   (sr-speedbar-open)
                                   ))
   )
+
+;; Remap some funcs
+(add-hook 'speedbar-reconfigure-keymaps-hook
+          '(lambda ()
+             (define-key speedbar-mode-map [S-up] 'speedbar-up-directory)
+             (define-key speedbar-mode-map [right] 'speedbar-flush-expand-line)
+             (define-key speedbar-mode-map [left] 'speedbar-contract-line)
+             (define-key speedbar-mode-map [M-up] 'speedbar-restricted-prev)
+             (define-key speedbar-mode-map [M-down] 'speedbar-restricted-next)
+             (define-key speedbar-mode-map [up] 'speedbar-prev)
+             (define-key speedbar-mode-map [down] 'speedbar-next)))
+
 
 ;; Dirty hack for synchronous writing
 (defun sync-writing ()
