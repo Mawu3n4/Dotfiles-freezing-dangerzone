@@ -15,14 +15,30 @@
 ;; (add-to-list 'auto-mode-alist '("\\.styl$" . sws-mode))
 ;; (add-to-list 'auto-mode-alist '("\\.jade$" . jade-mode))
 
+;; Split horizontally by default
+;; (setq split-height-threshold nil)
+;; (setq split-width-threshold 80)
+
 ;; Speedbar
 ;; Open Speedbar at startup if frame is big enough
 (when
     (> (frame-width) 120)
   (add-hook 'emacs-startup-hook (lambda ()
                                   (sr-speedbar-open)
-                                  ))
-  )
+                                  )))
+
+(global-set-key (kbd "C-@") (lambda()
+                              (interactive)
+                              (setq current-file (buffer-file-name))
+                              (sr-speedbar-refresh)
+                              (switch-to-buffer-other-frame "*SPEEDBAR*")
+                              (speedbar-find-selected-file current-file)
+                              (speedbar-expand-line)
+                              (other-window 1)
+                              (delete-window)
+                              (other-window -1)
+                              )
+                )
 
 ;; Remap some funcs
 (add-hook 'speedbar-reconfigure-keymaps-hook
@@ -38,18 +54,35 @@
              (define-key speedbar-mode-map [C-M-down] 'speedbar-forward-list)
              )
           )
-
 ;; Dirty hack for synchronous writing
 (defun sync-writing ()
   (interactive)
   (run-with-idle-timer 1 1 'save-buffer)
   (remove-hook 'before-save-hook 'whitespace-cleanup)
   )
-(global-set-key (kbd "C-q") 'sync-writing)
 
-;; i3 bindings for tiled buffers
-(global-set-key (kbd "<M-left>") 'other-window)
+
+(defadvice epc:make-procbuf (around foo activate)
+  ad-do-it
+  (with-current-buffer ad-return-value
+    (rename-buffer (concat " " (buffer-name)))
+        (setq ad-return-value (buffer-name))))
+;; i3-like bindings for tiled buffers
+(global-set-key (kbd "M-s <right>") (lambda()
+                                      (interactive)
+                                      (other-window 1)
+                                      (delete-window)))
+
+(global-set-key (kbd "M-s  <left>") (lambda()
+                                      (interactive)
+                                      (other-window -1)
+                                      (delete-window)))
+
 (global-set-key (kbd "<M-right>") 'other-window)
+(global-set-key (kbd "<M-left>") (lambda()
+                                   (interactive)
+                                   (other-window -1)))
+
 (global-set-key (kbd "C-x v") 'split-window-below)
 (global-set-key (kbd "C-x h") 'split-window-right)
 
