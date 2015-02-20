@@ -27,17 +27,17 @@
                                   (sr-speedbar-open)
                                   )))
 
-(global-set-key (kbd "C-@") (lambda()
-                              (interactive)
-                              (setq current-file (buffer-file-name))
-                              (sr-speedbar-refresh)
-                              (switch-to-buffer-other-frame "*SPEEDBAR*")
-                              (speedbar-find-selected-file current-file)
-                              (speedbar-expand-line)
-                              (other-window 1)
-                              (delete-window)
-                              (other-window -1)
-                              )
+(global-set-key (kbd "C-\\") (lambda()
+                               (interactive)
+                               (setq current-file (buffer-file-name))
+                               (sr-speedbar-refresh)
+                               (switch-to-buffer-other-frame "*SPEEDBAR*")
+                               (speedbar-find-selected-file current-file)
+                               (speedbar-expand-line)
+                               (other-window 1)
+                               (delete-window)
+                               (other-window -1)
+                               )
                 )
 
 ;; Remap some funcs
@@ -114,6 +114,15 @@
 (setq indent-line-function 'insert-tab)
 
 ;; Python
+;; Add/remove level of indent
+(global-set-key (kbd "C-M-<left>") (lambda()
+                                     (interactive)
+                                     (replace-regexp "^    " "")))
+(global-set-key (kbd "C-M-<right>") (lambda()
+                                      (interactive)
+                                      (replace-regexp "^" "    ")))
+
+;; Enable gtags and fix space indent
 (add-hook 'python-mode-hook
           (lambda ()
             (gtags-mode t)
