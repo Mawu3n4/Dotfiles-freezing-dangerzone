@@ -17,6 +17,11 @@
 # Salmon Light : #e04a37
 # Magenta : #a0043c
 
+# Dark kaki: #201e16
+# Kaki: #9ea074
+# River Blue: #66a094
+# Sand white: #d9ceae
+
 set $mod Mod4
 
 set $PageUp 112
@@ -26,7 +31,8 @@ set $VolMute 94
 set $VolDown 95
 set $VolUp 96
 
-client.focused          #4c7899 #a0043c #ffffff #a0043c
+set $purple = a0043c
+client.focused          #4c7899 #9ea074 #ffffff #9ea074
 client.focused_inactive #333333 #5f676a #ffffff #484e50
 client.unfocused        #333333 #222222 #888888 #292d2e
 client.urgent           #2f343a #900000 #ffffff #900000
@@ -49,12 +55,12 @@ bindcode 163 exec skype
 bindcode 180 exec google-chrome
 bindcode $mod+180 exec google-chrome --incognito
 bindcode $mod+46  exec i3lock -i ~/.wallpaper.png -t
-bindcode 75  exec i3lock -i ~//.wallpaper.png -t
-bindcode 121 exec amixer -c 0 set Master toggle
+bindcode 75  exec i3lock -i ~/.wallpaper.png -t
+bindcode 121 exec amixer -D pulse set Master toggle
 bindcode 122 exec amixer -c 0 set Master 1-
 bindcode 123 exec amixer -c 0 set Master 1+ unmute
 
-bindcode $VolMute exec amixer -c 0 set Master toggle
+bindcode $VolMute exec amixer -D pulse set Master toggle
 bindcode $VolDown exec amixer -c 0 set Master 1-
 bindcode $VolUp exec amixer -c 0 set Master 1+ unmute
 
@@ -233,11 +239,10 @@ bindsym $mod+m move workspace to output left
 exec feh --bg-scale ~/.wallpaper.jpg
 
 exec xrdb ~/.Xdefaults
-exec xmodmap ~/.xmodmap
 exec xbindkeys ~/.xbindkeysrc
 
 # Composite Manager
-exec compton --opacity-rule '80:window_type = "dock" && class_g = "i3bar"'
+exec compton --opacity-rule '75:window_type = "dock" && class_g = "i3bar"'
 
 # Notification service
 exec twmnd

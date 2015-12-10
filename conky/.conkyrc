@@ -15,24 +15,24 @@ pad_percents      3
 override_utf8_locale yes
 
 color0 #122002
-color1 #a0035a
-color2 #e06940
-color3 #e04a37
+color1 #8E9068
+color2 #9a784b
+color3 #67a693
 color4 #a0043c
 
 TEXT
 ,[\
-  {"full_text": " ${if_existing /sys/class/net/wlan0/operstate up} [w0: ${wireless_Essid wlan0}: ${addr wlan0}]${endif} ", "color":"\#e06940"},\
-  {"full_text": " ${if_existing /sys/class/net/eth0/operstate up} [e0 ${addr eth0}]${endif} ", "color":"\#e06940"},\
-  {"full_text": " ♫ [${exec ~/.bin/sound}]","color":"\#a0035a"},\
-  {"full_text": " ⧎ [${fs_free_perc /}] ", "color":"\#a0043c"},\
-  {"full_text": " ⚡ [${battery_percent}%] ", "color":"\#e04a37"},\
-  {"full_text": " ◬ [$swapbar] ", "color":"\#e06940"},\
-  {"full_text": " ⧕ [$membar] ", "color":"\#a0035a"},\
-  {"full_text": " ◯ [$cpubar] ", "color":"\#e06940"},\
-  {"full_text": " ∑ [$processes] ","color":"\#a0035a"},\
-  {"full_text": " [${time %d-%m} ","color": "\#e04a37"},\
+  {"full_text": " ◬ [$swapbar] ", "color":"\#9a784b"},\
+  {"full_text": " ⧕ [$membar] ", "color":"\#8E9068"},\
+  {"full_text": " ◯ [$cpubar] ", "color":"\#9a784b"},\
+  {"full_text": " [${exec echo "(" $(date +%s) - $(date --utc --date "2015-06-01" +%s) ")/ (3600 * 24)" | bc}] ","color": "\#66a094"},\
+  {"full_text": " ${if_existing /sys/class/net/eth0/operstate up} [e0 ${addr eth0}]${endif} ", "color":"\#9a784b"},\
+  {"full_text": " ♫ [${exec ~/.bin/sound}]","color":"\#8E9068"},\
+  {"full_text": " ⧎ [${fs_free_perc /}] ", "color":"\#BCBCB9"},\
+  {"full_text": " ⚡ [${battery_percent}%] ", "color":"\#67a693"},\
+  {"full_text": " ∑ [$processes] ","color":"\#8E9068"},\
+  {"full_text": " [${time %d-%m} ","color": "\#67a693"},\
   {"full_text": " ${time %I:%M}","color": "\#FFFFFF", "font": "bold"},\
-  {"full_text": " GMT${exec date +%z | cut -c1-3}] ","color": "\#e04a37"},\
-  {"full_text": " [${exec setxkbmap -query | grep -oE 'us|fr' | tr '[:lower:]' '[:upper:]'}] ","color": "\#e04a37"}\
+  {"full_text": " GMT${exec date +%z | cut -c1-3}] ","color": "\#67a693"},\
+  {"full_text": " [${exec setxkbmap -query | grep -oE 'us|fr' | tr '[:lower:]' '[:upper:]'}] ","color": "\#66a094"}\
 ]

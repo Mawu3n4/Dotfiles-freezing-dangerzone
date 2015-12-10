@@ -4,20 +4,20 @@
 (add-to-list 'load-path "~/.emacs.d/expand-region")
 (add-to-list 'load-path "~/.emacs.d/multiple-cursors")
 (add-to-list 'load-path "~/.emacs.d/eval-and-replace")
+(add-to-list 'load-path "~/.emacs.d/emacs-calfw")
 (add-to-list 'load-path "~/.emacs.d/vendor")
 
+
+;; Calendar
+(require 'calfw)
+
 ;; Install packages
+(require 'package)
 (setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
                          ("marmalade" . "https://marmalade-repo.org/packages/")
                          ("melpa" . "http://melpa.milkbox.net/packages/")))
-;; (require 'sws-mode)
-;; (require 'jade-mode)
-;; (add-to-list 'auto-mode-alist '("\\.styl$" . sws-mode))
-;; (add-to-list 'auto-mode-alist '("\\.jade$" . jade-mode))
+(package-initialize)
 
-;; Split horizontally by default
-;; (setq split-height-threshold nil)
-;; (setq split-width-threshold 80)
 
 ;; Speedbar
 ;; Open Speedbar at startup if frame is big enough
@@ -85,33 +85,60 @@
 
 (global-set-key (kbd "C-x v") 'split-window-below)
 (global-set-key (kbd "C-x h") 'split-window-right)
+;; --Speedbar--
+
+(global-set-key (kbd "<M-up>") 'delete-indentation)
+
+;; ;; Projectile
+;; (projectile-global-mode)q
+;; (helm-projectile-on)
+;; (global-set-key (kbd "C-c C-p") 'helm-projectile-switch-project)
+
+;; (defun projectile-helm-ag ()
+;;        (interactive)
+;;        (helm-do-ag (projectile-project-root)))
+;; (global-set-key (kbd "C-c #") 'projectile-helm-ag)
+;; (global-set-key (kbd "C-c '") 'helm-projectile-find-file)
+
+;; (require 'projectile-speedbar)
+;; (global-set-key (kbd "C-<f2>") 'projectile-speedbar-open-current-buffer-in-tree)
+;; ;; --Projectile--
+
 
 (global-set-key (kbd "M-`") 'next-buffer)
+
 
 ;; Fuzzy search by default
 (global-set-key (kbd "C-x C-f") 'fiplr-find-file)
 
 
+;; RST
 (require 'rst)
 (setq auto-mode-alist
       (append '(("\\.txt$" . rst-mode)
                 ("\\.rst$" . rst-mode)
                 ("\\.rest$" . rst-mode)) auto-mode-alist))
+
+
 ;; Enable by default minor mode Highlight 80+
 (require 'highlight-80+)
 (add-hook 'prog-mode-hook 'highlight-80+-mode)
 
+
 ;; Share kill-region with xclip
 (require 'xclip)
+
 
 ;; JS Comments style
 (add-hook 'js-mode-hook (lambda () (setq comment-start "/*"
                                          comment-end   "*/")))
 
+
 ;; Use 4 spaces instead of tabs for indentation
 (setq-default indent-tabs-mode nil)
 (setq-default tab-width 4)
 (setq indent-line-function 'insert-tab)
+
 
 ;; Python
 ;; Add/remove level of indent
@@ -122,13 +149,19 @@
                                       (interactive)
                                       (replace-regexp "^" "    ")))
 
+;; Window stuff
+(defadvice split-window (after move-point-to-new-window activate)
+  "Moves the point to the newly created window after splitting."
+  (other-window 1))
+
 ;; Enable gtags and fix space indent
 (add-hook 'python-mode-hook
           (lambda ()
             (gtags-mode t)
             (setq indent-tabs-mode nil)
             (setq tab-width 4)
-            (setq python-indent 4)))
+            (setq python-indent 4)
+            (projectile-mode)))
 
 
 (add-hook 'python-mode-hook 'flycheck-mode)
@@ -149,6 +182,8 @@
         (list "pyflakes" (list local-file)))))
   (add-to-list 'flymake-allowed-file-name-masks
                               '("\\.py\\'" flymake-pyflakes-init)))
+
+
 ;; JavaScript
 (add-hook 'js-mode-hook
       (lambda ()
@@ -156,47 +191,33 @@
         (setq tab-width 4)
         (setq python-indent 4)))
 
+
 ;; Haskell Mode
 (add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
 (add-hook 'haskell-mode-hook 'turn-on-haskell-indent)
 
+
 ;; Makes *scratch* empty.
 (setq initial-scratch-message "")
-
 ;; Removes *scratch* from buffer after the mode has been set.
 (defun remove-scratch-buffer ()
   (if (get-buffer "*scratch*")
       (kill-buffer "*scratch*")))
 (add-hook 'after-change-major-mode-hook 'remove-scratch-buffer)
-
 ;; Removes *messages* from the buffer.
 (setq-default message-log-max nil)
 (kill-buffer "*Messages*")
-
 ;; Removes *Completions* from buffer after you've opened a file.
 (add-hook 'minibuffer-exit-hook
           '(lambda ()
              (let ((buffer "*Completions*"))
                (and (get-buffer buffer)
                     (kill-buffer buffer)))))
-
 ;; Don't show *Buffer list* when opening multiple files at the same time.
 (setq inhibit-startup-buffer-menu t)
-
 ;; Show only one active window when opening multiple files at the same time.
 (add-hook 'window-setup-hook 'delete-other-windows)
 
-
-;; Web-mode (http://web-mode.org/) -- (disabled, slows emacs at launch)
-;; (require 'web-mode)
-;; (add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
-;; (add-to-list 'auto-mode-alist '("\\.tpl\\.php\\'" . web-mode))
-;; (add-to-list 'auto-mode-alist '("\\.[gj]sp\\'" . web-mode))
-;; (add-to-list 'auto-mode-alist '("\\.as[cp]x\\'" . web-mode))
-;; (add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
-;; (add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
-;; (add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
-;; (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
 
 ;; Expand-region (Magnars @EmacsRocks)
 (require 'expand-region)
@@ -320,7 +341,6 @@
 ;; save whitespace-mode variables
 (add-to-list 'desktop-globals-to-save 'whitespace-line-column)
 (add-to-list 'desktop-globals-to-save 'whitespace-style)
-
 ;; (require 'auto-complete-config)
 ;; (add-to-list 'ac-dictionary-directories "~/.emacs.d//ac-dict")
 ;; (ac-config-default)
@@ -376,3 +396,4 @@
   ;; Your init file should contain only one such instance.
   ;; If there is more than one, they won't work right.
  )
+(global-auto-revert-mode t)
