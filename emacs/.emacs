@@ -149,6 +149,10 @@
                                       (interactive)
                                       (replace-regexp "^" "    ")))
 
+;; PEP8 import order
+;; (require 'py-isort)
+;; (add-hook 'before-save-hook 'py-isort-before-save)
+
 ;; Window stuff
 (defadvice split-window (after move-point-to-new-window activate)
   "Moves the point to the newly created window after splitting."
