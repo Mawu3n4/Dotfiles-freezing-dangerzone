@@ -11,11 +11,28 @@
 
 (require 'helm-config)
 
+(require 'yaml-mode)
+(add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode))
+(add-hook 'yaml-mode-hook
+          (lambda ()
+            (define-key yaml-mode-map "\C-m" 'newline-and-indent)))
+
+(require 'protobuf-mode)
+(add-to-list 'auto-mode-alist '("\\.proto\\'" . protobuf-mode))
+
+(defconst my-protobuf-style
+  '((c-basic-offset . 4)
+    (indent-tabs-mode . nil)))
+
+(add-hook 'protobuf-mode-hook
+          (lambda () (c-add-style "my-style" my-protobuf-style t)))
+
+
 ;; Install packages
 (require 'package)
 (setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
                          ("marmalade" . "https://marmalade-repo.org/packages/")
-                         ("melpa" . "http://melpa.org/packages/")))
+                         ("melpa" . "http://stable.melpa.org/packages/")))
 (package-initialize)
 
 
@@ -178,6 +195,7 @@
 
 (require 'flymake-python-pyflakes)
 (add-hook 'python-mode-hook 'flymake-python-pyflakes-load)
+(setq flymake-python-pyflakes-executable "flake8")
 (when (load "flymake" t)
   (defun flymake-pyflakes-init ()
     (when (not (subsetp (list (current-buffer)) (tramp-list-remote-buffers)))
@@ -263,6 +281,7 @@
 (add-to-list 'load-path "/path/to/j-mode/")
 (autoload 'j-mode "j-mode.el" "Major mode for editing J files" t)
 (add-to-list 'auto-mode-alist '("\\.ij[rstp]$" . j-mode))
+
 
 ;; goto line #
 (global-set-key (kbd "C-c C-g") 'goto-line)
