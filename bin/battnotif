@@ -1,0 +1,17 @@
+#!/bin/bash
+export DISPLAY=:0
+XAUTHORITY=$HOME/.Xauthority
+
+if [ -r "$HOME/.dbus/Xdbus" ]; then
+    . "$HOME/.dbus/Xdbus"
+fi
+
+battery_level=`acpi -b | grep -P -o '[0-9]+(?=%)'`
+
+if [ $battery_level -le 15 ]
+then
+    /usr/bin/notify-send -u critical "Battery low" "Battery level is ${battery_level}%!"
+    echo 'batt low' >> $HOME/cron.log
+fi
+
+echo 'ran batt' >> $HOME/cron.log

@@ -1,0 +1,8 @@
+#!/bin/bash
+
+xrandr --output eDP1 --mode 1920x1080 --pos 0x0 --output HDMI1                                                                                                                                                         --pos 1920x0 --mode 2560x1440
+dbdevice Translate
+setxkbmap us
+xmodmap ~/.xmodmap
+
+echo 'Have a good day!'

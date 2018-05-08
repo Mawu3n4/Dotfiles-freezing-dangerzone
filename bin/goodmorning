@@ -1,0 +1,10 @@
+#!/bin/bash
+
+echo '0.90' > ~/.opacityrc
+xrandr --output eDP1 --mode 1920x1080 --pos 0x0 --output HDMI1 --pos 1920x0 --mode 2560x1440
+dbdevice Translate
+setxkbmap us
+xmodmap ~/.xmodmap
+feh --bg-scale ~/.wallpaper.jpg
+
+echo 'Have a good day!'
