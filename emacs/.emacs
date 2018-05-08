@@ -4,18 +4,18 @@
 (add-to-list 'load-path "~/.emacs.d/expand-region")
 (add-to-list 'load-path "~/.emacs.d/multiple-cursors")
 (add-to-list 'load-path "~/.emacs.d/eval-and-replace")
-(add-to-list 'load-path "~/.emacs.d/emacs-calfw")
+(add-to-list 'load-path "~/.emacs.d/emacs-jedi")
 (add-to-list 'load-path "~/.emacs.d/vendor")
+(add-to-list 'load-path "~/.emacs.d/helm")
+(add-to-list 'load-path "~/.emacs.d/emacs-async")
 
-
-;; Calendar
-(require 'calfw)
+(require 'helm-config)
 
 ;; Install packages
 (require 'package)
 (setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
                          ("marmalade" . "https://marmalade-repo.org/packages/")
-                         ("melpa" . "http://melpa.milkbox.net/packages/")))
+                         ("melpa" . "http://melpa.org/packages/")))
 (package-initialize)
 
 
@@ -175,6 +175,9 @@
 (setq jedi:setup-keys t)                      ; optional
 (setq jedi:complete-on-dot t)                 ; optional
 
+
+(require 'flymake-python-pyflakes)
+(add-hook 'python-mode-hook 'flymake-python-pyflakes-load)
 (when (load "flymake" t)
   (defun flymake-pyflakes-init ()
     (when (not (subsetp (list (current-buffer)) (tramp-list-remote-buffers)))

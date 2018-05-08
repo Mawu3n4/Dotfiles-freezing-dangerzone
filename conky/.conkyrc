@@ -26,8 +26,8 @@ TEXT
   {"full_text": " ⧕ [$membar] ", "color":"\#8E9068"},\
   {"full_text": " ◯ [$cpubar] ", "color":"\#9a784b"},\
   {"full_text": " [${exec echo "(" $(date +%s) - $(date --utc --date "2015-06-01" +%s) ")/ (3600 * 24)" | bc}] ","color": "\#66a094"},\
-  {"full_text": " ${if_existing /sys/class/net/eth0/operstate up} [e0 ${addr eth0}]${endif} ", "color":"\#9a784b"},\
   {"full_text": " ♫ [${exec ~/.bin/sound}]","color":"\#8E9068"},\
+  {"full_text": " ⇅ ${wireless_essid wlp3s0}: [${wireless_link_bar wlp3s0}] ","color":"\#8E9068"},\
   {"full_text": " ⧎ [${fs_free_perc /}] ", "color":"\#BCBCB9"},\
   {"full_text": " ⚡ [${battery_percent}%] ", "color":"\#67a693"},\
   {"full_text": " ∑ [$processes] ","color":"\#8E9068"},\

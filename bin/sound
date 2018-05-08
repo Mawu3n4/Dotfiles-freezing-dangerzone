@@ -1,3 +1,3 @@
 #!/bin/bash
 
-[ -n "$(amixer sget Master | grep "\[off\]")" ] && echo "✗" || amixer sget Master | grep 'Left.*\[on\]' | cut -d ']' -f1 | cut -d '[' -f2
+[ -n "$(amixer -c 1 sget Master | grep "\[off\]")" ] && echo "✗" || amixer -c 1 sget Master | grep 'Playback.*\[on\]' | cut -d ']' -f1 | cut -d '[' -f2

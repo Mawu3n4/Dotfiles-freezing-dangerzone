@@ -54,8 +54,8 @@ bindcode 78 exec  MyScreenShot
 bindcode 163 exec skype
 bindcode 180 exec google-chrome
 bindcode $mod+180 exec google-chrome --incognito
-bindcode $mod+46  exec i3lock -i ~/.wallpaper.png -t
-bindcode 75  exec i3lock -i ~/.wallpaper.png -t
+bindcode $mod+46  exec i3lock -i ~/.wallpaper.png -c c94445
+bindcode 75  exec i3lock -i ~/.wallpaper.png -c c94445
 bindcode 121 exec amixer -D pulse set Master toggle
 bindcode 122 exec amixer -c 0 set Master 1-
 bindcode 123 exec amixer -c 0 set Master 1+ unmute
@@ -236,13 +236,13 @@ bar {
 bindsym $mod+m move workspace to output left
 
 # Set wallpaper and set property of root window
-exec feh --bg-scale ~/.wallpaper.jpg
+exec feh --bg-scale ~/.wallpaper.png
 
 exec xrdb ~/.Xdefaults
 exec xbindkeys ~/.xbindkeysrc
 
 # Composite Manager
-exec compton --opacity-rule '75:window_type = "dock" && class_g = "i3bar"'
+exec compton --opacity-rule '90:window_type = "dock" && class_g = "i3bar"'
 
 # Notification service
 exec twmnd

@@ -50,35 +50,35 @@ git submodule init
 git submodule update
 
 info "Configuring i3wm... "
-link $DF/i3 $HOME/.i3
+link $DF/Projects/Github/Dotfiles-freezing-dangerzone/i3 $HOME/.i3
 info "done"
 
 info "Configuring Conky... "
-link $DF/conky/.conkyrc $HOME/.conkyrc
+link $DF/Projects/Github/Dotfiles-freezing-dangerzone/conky/.conkyrc $HOME/.conkyrc
 info "done"
 
 info "Configuring X options... "
-link $DF/X/.Xdefaults $HOME/.Xdefaults
-link $DF/X/.xsession $HOME/.xsession
-link $DF/X/.xmodmap $HOME/.xmodmap
+link $DF/Projects/Github/Dotfiles-freezing-dangerzone/unix/.Xdefaults $HOME/.Xdefaults
+link $DF/Projects/Github/Dotfiles-freezing-dangerzone/unix/.xsession $HOME/.xsession
+link $DF/Projects/Github/Dotfiles-freezing-dangerzone/unix/.xmodmap $HOME/.xmodmap
 info "done"
 
 
 info "Configuring ZSH... "
-link $DF/zsh/.zshrc $HOME/.zshrc
-link $DF/zsh/.opacityrc $HOME/.opacityrc
-link $DF/zsh/oh-my-zsh/theme/mawuena.zsh-theme $HOME/.oh-my-zsh/themes/mawuena.zsh-theme
+link $DF/Projects/Github/Dotfiles-freezing-dangerzone/zsh/.zshrc $HOME/.zshrc
+link $DF/Projects/Github/Dotfiles-freezing-dangerzone/zsh/.opacityrc $HOME/.opacityrc
+link $DF/Projects/Github/Dotfiles-freezing-dangerzone/zsh/oh-my-zsh/theme/mawuena.zsh-theme $HOME/.oh-my-zsh/themes/mawuena.zsh-theme
 git clone https://github.com/junegunn/fzf.git $HOME/.fzf
 $HOME/.fzf/install
 git clone https://github.com/zsh-users/antigen.git $HOME/.antigen
 info "done"
 
 info "Configuring weechat... "
-link $DF/weechat/irc.conf $HOME/.weechat/irc.conf
+link $DF/Projects/Github/Dotfiles-freezing-dangerzone/weechat/irc.conf $HOME/.weechat/irc.conf
 info "done"
 
 info "Configuring GHCI... "
-link $DF/ghci/.ghci $HOME/.ghci
+link $DF/Projects/Github/Dotfiles-freezing-dangerzone/ghci/.ghci $HOME/.ghci
 info "done"
 
 info "Configuring scripts... "
@@ -86,8 +86,8 @@ link $DK/bin $HOME/.bin
 info "done"
 
 info "Configuring eMacs... "
-link $DF/emacs/.emacs $HOME/.emacs
-link $DF/emacs/.emacs.d $HOME/.emacs.d
+link $DF/Projects/Github/Dotfiles-freezing-dangerzone/emacs/.emacs $HOME/.emacs
+link $DF/Projects/Github/Dotfiles-freezing-dangerzone/emacs/.emacs.d $HOME/.emacs.d
 info "done"
 
 
@@ -96,8 +96,8 @@ if [ "$UID" -ne "$ROOT_UID" ] ; then
     error "You must be root to do that!"
     exit 1
 fi
-link $DF/slim/binary /usr/share/slim/themes/binary
-link $DF/slim/slim.conf /etc/slim.conf
+link $DF/Projects/Github/Dotfiles-freezing-dangerzone/slim/binary /usr/share/slim/themes/binary
+link $DF/Projects/Github/Dotfiles-freezing-dangerzone/slim/slim.conf /etc/slim.conf
 info "done"
 
 UPDATE=0
