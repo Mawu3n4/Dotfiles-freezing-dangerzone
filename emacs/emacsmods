@@ -1,0 +1,18 @@
+[submodule "multiple-cursors"]
+	path = multiple-cursors
+	url = git@github.com:magnars/multiple-cursors.el.git
+[submodule "expand-region"]
+	path = expand-region
+	url = git@github.com:magnars/expand-region.el.git
+[submodule "j-mode"]
+	path = j-mode
+	url = https://github.com/zellio/j-mode.git
+[submodule "emacs-calfw"]
+	path = emacs-calfw
+	url = git@github.com:kiwanami/emacs-calfw.git
+[submodule "emacs-async"]
+	path = emacs-async
+	url = https://github.com/jwiegley/emacs-async.git
+[submodule "use-package"]
+	path = use-package
+	url = git@github.com:jwiegley/use-package.git
