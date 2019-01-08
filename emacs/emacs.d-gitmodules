@@ -16,3 +16,9 @@
 [submodule "use-package"]
 	path = use-package
 	url = git@github.com:jwiegley/use-package.git
+[submodule "helm"]
+	path = helm
+	url = git@github.com:emacs-helm/helm.git
+[submodule "auto-complete"]
+	path = auto-complete
+	url = git@github.com:auto-complete/auto-complete.git
