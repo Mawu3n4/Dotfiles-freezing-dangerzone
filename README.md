@@ -12,7 +12,7 @@ List of config files for my daily work environment
 
 ### zsh
 
-* zshrc file
+* zshrc file (install antigen)
 * oh-my-zsh crunch modified theme
 * decktocod (see getdeck alias)
 
@@ -30,6 +30,8 @@ _Forked from [rzagabe](https://github.com/rzagabe)_
 * Wallpaper
 
 ### emacs
+
+(Setup submodules and install helm from package-install)
 
 * Styling
 * Whitespace highlight

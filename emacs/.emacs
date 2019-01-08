@@ -11,8 +11,6 @@
 (add-to-list 'package-archives '("melpa" . "https://melpa.milkbox.net/packages/") t)
 (package-initialize)
 
-(ac-config-default)
-
 ;; Load Paths
 (add-to-list 'load-path "~/.emacs.d/lisp")
 (add-to-list 'load-path "~/.emacs.d/expand-region")
@@ -22,6 +20,12 @@
 (add-to-list 'load-path "~/.emacs.d/vendor")
 (add-to-list 'load-path "~/.emacs.d/helm")
 (add-to-list 'load-path "~/.emacs.d/emacs-async")
+(add-to-list 'load-path "~/.emacs.d/auto-complete")
+
+(package-initialize)
+
+(require 'auto-complete-config)
+(ac-config-default)
 
 (require 'helm-config)
 

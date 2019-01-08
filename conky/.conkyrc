@@ -26,7 +26,6 @@ TEXT
   {"full_text": " ⧕ [$membar] ", "color":"\#ea5757"},\
   {"full_text": " ◯ [$cpubar] ", "color":"\#d7d7d7"},\
   {"full_text": " ♫ [${exec ~/.bin/sound}]","color":"\#66a094"},\
-  {"full_text": " ⇅ ${wireless_essid wlp2s0}: [${wireless_link_bar wlp2s0}] ","color":"\#ea5757"},\
   {"full_text": " ⧎ [${fs_free /}] ", "color":"\#d7d7d7"},\
   {"full_text": " ⚡ [${battery_percent}%] ", "color":"\#239669"},\
   {"full_text": " ∑ [$processes] ","color":"\#ea5757"},\
