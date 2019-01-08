@@ -1,3 +1,17 @@
+;; This is only needed once, near the top of the file
+(eval-when-compile
+  ;; Following line is not needed if use-package.el is in ~/.emacs.d
+  (add-to-list 'load-path "~/.emacs.d/use-package")
+  (require 'use-package))
+
+;; Install packages
+(require 'package)
+(add-to-list 'package-archives '("gnu" . "https://elpa.gnu.org/packages/") t)
+(add-to-list 'package-archives '("marmalade" . "https://marmalade-repo.org/packages/") t)
+(add-to-list 'package-archives '("melpa" . "https://melpa.milkbox.net/packages/") t)
+(package-initialize)
+
+(ac-config-default)
 
 ;; Load Paths
 (add-to-list 'load-path "~/.emacs.d/lisp")
@@ -20,20 +34,35 @@
 (require 'protobuf-mode)
 (add-to-list 'auto-mode-alist '("\\.proto\\'" . protobuf-mode))
 
+(require 'web-mode)
+(add-to-list 'auto-mode-alist '("\\.js\\'" . web-mode))
+
+(add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
+(add-to-list 'interpreter-mode-alist '("node" . js2-mode))
+
+;; adjust indents for web-mode to 2 spaces
+(defun my-web-mode-hook ()
+  "Hooks for Web mode. Adjust indents"
+  ;;; http://web-mode.org/
+  (setq web-mode-markup-indent-offset 2)
+  (setq web-mode-css-indent-offset 2)
+  (setq web-mode-code-indent-offset 2))
+
+(add-hook 'web-mode-hook  'my-web-mode-hook)
+;; for better jsx syntax-highlighting in web-mode
+;; - courtesy of Patrick @halbtuerke
+(defadvice web-mode-highlight-part (around tweak-jsx activate)
+  (if (equal web-mode-content-type "js")
+    (let ((web-mode-enable-part-face nil))
+      ad-do-it)
+    ad-do-it))
+
 (defconst my-protobuf-style
   '((c-basic-offset . 4)
     (indent-tabs-mode . nil)))
 
 (add-hook 'protobuf-mode-hook
           (lambda () (c-add-style "my-style" my-protobuf-style t)))
-
-
-;; Install packages
-(require 'package)
-(setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
-                         ("marmalade" . "https://marmalade-repo.org/packages/")
-                         ("melpa" . "http://stable.melpa.org/packages/")))
-(package-initialize)
 
 
 ;; Speedbar
@@ -184,29 +213,56 @@
             (setq python-indent 4)
             (projectile-mode)))
 
+(use-package flycheck
+  :ensure t
+  :init (global-flycheck-mode))
+;; turn on flychecking globally
+(add-hook 'after-init-hook #'global-flycheck-mode)
 
-(add-hook 'python-mode-hook 'flycheck-mode)
+;; disable jshint since we prefer eslint checking
+(setq-default flycheck-disabled-checkers
+  (append flycheck-disabled-checkers
+    '(javascript-jshint)))
 
-(autoload 'jedi:setup "jedi" nil t)
+;; use eslint with web-mode for jsx files
+(flycheck-add-mode 'javascript-eslint 'web-mode)
+
+;; customize flycheck temp file prefix
+(setq-default flycheck-temp-prefix ".flycheck")
+
+;; disable json-jsonlist checking for json files
+(setq-default flycheck-disabled-checkers
+  (append flycheck-disabled-checkers
+    '(json-jsonlist)))
+
+;; https://github.com/purcell/exec-path-from-shell
+;; only need exec-path-from-shell on OSX
+;; this hopefully sets up path and other vars better
+(when (memq window-system '(mac ns))
+  (exec-path-from-shell-initialize))
+
+(add-hook 'python-mode-hook 'jedi:ac-setup)
 (add-hook 'python-mode-hook 'jedi:setup)
-(setq jedi:setup-keys t)                      ; optional
 (setq jedi:complete-on-dot t)                 ; optional
 
+;; (setq jedi:setup-keys t)                      ; optional
+;; (setq jedi:complete-on-dot t)                 ; optional
 
-(require 'flymake-python-pyflakes)
-(add-hook 'python-mode-hook 'flymake-python-pyflakes-load)
-(setq flymake-python-pyflakes-executable "flake8")
-(when (load "flymake" t)
-  (defun flymake-pyflakes-init ()
-    (when (not (subsetp (list (current-buffer)) (tramp-list-remote-buffers)))
-      (let* ((temp-file (flymake-init-create-temp-buffer-copy
-                         'flymake-create-temp-inplace))
-             (local-file (file-relative-name
-                          temp-file
-                          (file-name-directory buffer-file-name))))
-        (list "pyflakes" (list local-file)))))
-  (add-to-list 'flymake-allowed-file-name-masks
-                              '("\\.py\\'" flymake-pyflakes-init)))
+
+;; (require 'flymake-python-pyflakes)
+;; (add-hook 'python-mode-hook 'flymake-python-pyflakes-load)
+;; (setq flymake-python-pyflakes-executable "flake8")
+;; (when (load "flymake" t)
+;;   (defun flymake-pyflakes-init ()
+;;     (when (not (subsetp (list (current-buffer)) (tramp-list-remote-buffers)))
+;;       (let* ((temp-file (flymake-init-create-temp-buffer-copy
+;;                          'flymake-create-temp-inplace))
+;;              (local-file (file-relative-name
+;;                           temp-file
+;;                           (file-name-directory buffer-file-name))))
+;;         (list "pyflakes" (list local-file)))))
+;;   (add-to-list 'flymake-allowed-file-name-masks
+;;                               '("\\.py\\'" flymake-pyflakes-init)))
 
 
 ;; JavaScript
@@ -367,9 +423,6 @@
 ;; save whitespace-mode variables
 (add-to-list 'desktop-globals-to-save 'whitespace-line-column)
 (add-to-list 'desktop-globals-to-save 'whitespace-style)
-;; (require 'auto-complete-config)
-;; (add-to-list 'ac-dictionary-directories "~/.emacs.d//ac-dict")
-;; (ac-config-default)
 
 
 ;; Ugly, needs to be moved to separate .el file
@@ -410,16 +463,19 @@
 
 ;;HEADER GUARDS END
 (custom-set-variables
-  ;; custom-set-variables was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
  '(comment-multi-line t)
+ '(package-selected-packages
+   (quote
+    (eslint-fix exec-path-from-shell json-mode js2-mode web-mode flycheck use-package flycheck-color-mode-line flycheck-pyflakes jedi markdown-mode pyflakes fiplr sr-speedbar multiple-cursors helm flymake-python-pyflakes)))
  '(show-paren-mode t))
 (custom-set-faces
-  ;; custom-set-faces was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
  )
 (global-auto-revert-mode t)
