@@ -474,7 +474,7 @@
  '(comment-multi-line t)
  '(package-selected-packages
    (quote
-    (eslint-fix exec-path-from-shell json-mode js2-mode web-mode flycheck use-package flycheck-color-mode-line flycheck-pyflakes jedi markdown-mode pyflakes fiplr sr-speedbar multiple-cursors helm flymake-python-pyflakes)))
+    (ac-python eslint-fix exec-path-from-shell json-mode js2-mode web-mode flycheck use-package flycheck-color-mode-line flycheck-pyflakes jedi markdown-mode pyflakes fiplr sr-speedbar multiple-cursors helm flymake-python-pyflakes)))
  '(show-paren-mode t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
